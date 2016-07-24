@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="目录," />
+  <meta name="keywords" content="数据结构," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="初入ACM的感想。">
+<meta name="description" content="字典树属于树形数据结构之一，在省空间和时间上大有作为。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello ACM">
-<meta property="og:url" content="http://yoursite.com/2015/08/11/hello-acm/index.html">
+<meta property="og:title" content="TrieTree(字典树，前缀树)">
+<meta property="og:url" content="http://yoursite.com/2015/08/17/trie-tree/index.html">
 <meta property="og:site_name" content="Kingofprank">
-<meta property="og:description" content="初入ACM的感想。">
-<meta property="og:updated_time" content="2015-08-11T12:24:23.520Z">
+<meta property="og:description" content="字典树属于树形数据结构之一，在省空间和时间上大有作为。">
+<meta property="og:updated_time" content="2015-08-17T02:34:08.857Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello ACM">
-<meta name="twitter:description" content="初入ACM的感想。">
+<meta name="twitter:title" content="TrieTree(字典树，前缀树)">
+<meta name="twitter:description" content="字典树属于树形数据结构之一，在省空间和时间上大有作为。">
 
 
 
@@ -114,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2015/08/11/hello-acm/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/08/17/trie-tree/"/>
 
-  <title> Hello ACM | Kingofprank </title>
+  <title> TrieTree(字典树，前缀树) | Kingofprank </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -236,7 +236,7 @@
             
             
               
-                Hello ACM
+                TrieTree(字典树，前缀树)
               
             
           </h1>
@@ -248,8 +248,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2015-08-11T19:25:57+08:00" content="2015-08-11">
-              2015-08-11
+            <time itemprop="dateCreated" datetime="2015-08-17T10:14:00+08:00" content="2015-08-17">
+              2015-08-17
             </time>
           </span>
 
@@ -276,11 +276,17 @@
       
 
       
-        <p>初入ACM的感想。<br><a id="more"></a></p>
-<h1 id="初入ACM"><a href="#初入ACM" class="headerlink" title="初入ACM"></a>初入ACM</h1><p>自从上了大一，定了专业，就入了计算机的坑。在一次社团招新的宣传上看到了这个东西，本来想入爱特那种做前端开发社团的，或者做蓝鲸那种黑客性质的也是不错的，但是最后还是没坚持学python（囧），连考试也没去参加。当然最后我还是选择了应该要参加一个计算机的方面的社团，于是就入了ACM这个坑。</p>
-<p>说实话，这东西和高中竞赛其实并没有很明显的区别，不过我高中的时候并没有参加这种比赛，现在想来真是浪费了不少时间，其实还是很有趣的，虽然经常被虐，不过能学到东西就是好的，大概就是这样。</p>
-<h1 id="关于ACM的竞赛"><a href="#关于ACM的竞赛" class="headerlink" title="关于ACM的竞赛"></a>关于ACM的竞赛</h1><p>这个比赛是五个小时内完成多道编程题目的竞赛，用OJ判题，AC了就挂上一个气球，颇有特色。<br>当然这个比赛还是涉猎很多方面的知识的，将大部分计算机常用的算法，数据结构都包含了进来，之后的文章中我将分成两部分，一部分做题解，另一部分做模板知识点梳理。这篇文章就如同一个目录一样吧，以后有什么变动都会在这里记录。</p>
-<h1 id="变更事项"><a href="#变更事项" class="headerlink" title="变更事项"></a>变更事项</h1><p>待补充…</p>
+        <p>字典树属于树形数据结构之一，在省空间和时间上大有作为。<br><a id="more"></a></p>
+<h1 id="关于TrieTree"><a href="#关于TrieTree" class="headerlink" title="关于TrieTree"></a>关于TrieTree</h1><p>TrieTree是一种有序树，通常的键是字符串，但键不是直接保存在节点中，每个节点的所有子孙都有共同的前缀，根节点一般对应空字符串。Trie可以看作是一个确定有限状态自动机(DFA)。</p>
+<h1 id="TrieTree的实现"><a href="#TrieTree的实现" class="headerlink" title="TrieTree的实现"></a>TrieTree的实现</h1><h3 id="节点结构"><a href="#节点结构" class="headerlink" title="节点结构"></a>节点结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#define MAX 26//26个字母</div><div class="line">struct trienode</div><div class="line">&#123;</div><div class="line">	int ncount;//记录该节点出现过的次数</div><div class="line">	struct trienode *next[MAX];</div><div class="line">&#125;memory[1000000];//自己设定空间大小</div></pre></td></tr></table></figure>
+<h3 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">int allocp=0;</div><div class="line">trienode *createtrie()</div><div class="line">&#123;</div><div class="line">	trienode *temp=&amp;memory[allocp++];</div><div class="line">	temp-&gt;nconut=1;</div><div class="line">	for(int i=0;i&lt;MAX;i++)</div><div class="line">		temp-&gt;next[i]=NULL;</div><div class="line">	return temp;</div><div class="line">&#125;</div><div class="line">trienode *root=createtrie();//根节点设为全局变量，减少调用次数</div></pre></td></tr></table></figure>
+<h3 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">void inserttrie(char str[])//读入字符串</div><div class="line">&#123;</div><div class="line">	trienode *temp=root;</div><div class="line">	int i=0,k;</div><div class="line">	while(str[i])</div><div class="line">	&#123;</div><div class="line">		k=str[i]-&apos;a&apos;;//计算位置</div><div class="line">		if(temp-&gt;next[k])</div><div class="line">		&#123;</div><div class="line">			temp-&gt;next[k]-&gt;ncount++;</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">		&#123;</div><div class="line">			temp-&gt;next[k]=createtrie();</div><div class="line">		&#125;</div><div class="line">		temp=temp-&gt;next[k];</div><div class="line">		i++;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">int searchtrie(char str[])//读入字符串</div><div class="line">&#123;</div><div class="line">	if(root=NULL)</div><div class="line">		return 0;</div><div class="line">	trienode *temp=root;</div><div class="line">	int i=0,k;</div><div class="line">	while(str[i])</div><div class="line">	&#123;</div><div class="line">		k=str[i]-&apos;a&apos;;</div><div class="line">		if(temp-&gt;next[k])</div><div class="line">		&#123;</div><div class="line">			temp=temp-&gt;next[k];</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">			return 0;</div><div class="line">		i++;</div><div class="line">	&#125;</div><div class="line">	return tmp-&gt;ncount;//这个前缀出现了几次</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="trietree的应用"><a href="#trietree的应用" class="headerlink" title="trietree的应用"></a>trietree的应用</h1><ul>
+<li>用于串的快速检索</li>
+<li>串的排序</li>
+<li>最长公共前缀</li>
+</ul>
 
       
     </div>
@@ -303,7 +309,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/目录/" rel="tag">#目录</a>
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
           
         </div>
       
@@ -312,16 +318,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/0201/08/19/stl/" rel="next" title="STL库">
-                <i class="fa fa-chevron-left"></i> STL库
+              <a href="/2015/08/13/segment-tree/" rel="next" title="线段树">
+                <i class="fa fa-chevron-left"></i> 线段树
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/11/rmq/" rel="prev" title="RMQ和ST算法">
-                RMQ和ST算法 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/08/18/toplogical-sort/" rel="prev" title="拓扑排序">
+                拓扑排序 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -429,7 +435,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初入ACM"><span class="nav-number">1.</span> <span class="nav-text">初入ACM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于ACM的竞赛"><span class="nav-number">2.</span> <span class="nav-text">关于ACM的竞赛</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变更事项"><span class="nav-number">3.</span> <span class="nav-text">变更事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于TrieTree"><span class="nav-number">1.</span> <span class="nav-text">关于TrieTree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TrieTree的实现"><span class="nav-number">2.</span> <span class="nav-text">TrieTree的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#节点结构"><span class="nav-number">2.0.1.</span> <span class="nav-text">节点结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建树"><span class="nav-number">2.0.2.</span> <span class="nav-text">建树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入节点"><span class="nav-number">2.0.3.</span> <span class="nav-text">插入节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询"><span class="nav-number">2.0.4.</span> <span class="nav-text">查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#trietree的应用"><span class="nav-number">3.</span> <span class="nav-text">trietree的应用</span></a></li></ol></div>
             
           </div>
         </section>
