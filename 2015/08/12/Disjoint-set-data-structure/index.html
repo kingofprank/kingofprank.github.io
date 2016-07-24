@@ -1,0 +1,588 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据结构," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="自从有了并查集，妈妈再也不用担心我分类了。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并查集">
+<meta property="og:url" content="http://yoursite.com/2015/08/12/Disjoint-set-data-structure/index.html">
+<meta property="og:site_name" content="Kingofprank">
+<meta property="og:description" content="自从有了并查集，妈妈再也不用担心我分类了。。">
+<meta property="og:updated_time" content="2016-07-24T14:35:27.210Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="并查集">
+<meta name="twitter:description" content="自从有了并查集，妈妈再也不用担心我分类了。。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/08/12/Disjoint-set-data-structure/"/>
+
+  <title> 并查集 | Kingofprank </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kingofprank</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                并查集
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-08-12T19:07:00+08:00" content="2015-08-12">
+              2015-08-12
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>自从有了并查集，妈妈再也不用担心我分类了。。<br><a id="more"></a></p>
+<p>并查集是用来分类的一种数据结构，其主要的优化有两种。<br>一种是<strong>优化并查集的查询，叫路径压缩</strong>，有递归和迭代两种版本。<br>一种是<strong>优化并查集的合并，叫按秩合并</strong>，用rank[]数组记录下代表元素子树的最大可能高度，把矮树挂到高树下面作为孩子，尽量减少树的高度。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>1.并查集的初始化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for(i=0;i&lt;=n;i++)</div><div class="line">&#123;</div><div class="line">	f[i]=i;</div><div class="line">	rank[i]=0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.并查集的查询</p>
+<ul>
+<li><p>递归版</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int find(int x)&#123;</div><div class="line">	if(x!=f[x])</div><div class="line">		f[x]=find(f[x]);//路径压缩</div><div class="line">	return f[x];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>递归简单版<br>这个版本就一行，直接路径压缩加合并，代码方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int find(int x)&#123;</div><div class="line">	return f[x]==x?x:f[x]=find(f[x]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>非递归版<br>防止爆栈。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">int find(int x)&#123;</div><div class="line">	int root,k,temp;</div><div class="line">	root=x;</div><div class="line">	while(root!=f[root])</div><div class="line">		root=f[root];//查找根节点</div><div class="line">	temp=x;</div><div class="line">	while(temp!=root)//如果还没到根节点</div><div class="line">	&#123;</div><div class="line">		k=f[temp];</div><div class="line">		f[temp]=root;//把每个节点都压缩到根节点</div><div class="line">		temp=k;//找这个节点的父亲继续操作</div><div class="line">	&#125;</div><div class="line">	return root;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>3.并查集的合并</p>
+<ul>
+<li><p>普通合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">int union(int x,int y)&#123;</div><div class="line">	int f1=find(x);</div><div class="line">	int f2=find(y);</div><div class="line">	if(f1!=f2)</div><div class="line">		&#123;f[f2]=f1;return 1;&#125;//之前未合并，现在合并</div><div class="line">	return 0;//已经是合并过的</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>按秩合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">int union(int x,int y)&#123;</div><div class="line">	int f1=find(x);</div><div class="line">	int f2=find(y);</div><div class="line">	if(x==y) return 0;//已经在一个集合中</div><div class="line">	else&#123;</div><div class="line">		if(rank[f1]&gt;=rank[f2])&#123;</div><div class="line">			f[f2]=f1;</div><div class="line">			rank[f1]+=rank[f2];</div><div class="line">		&#125;//f2子树比f1子树矮，将f2挂在f1上，更新rank</div><div class="line">		else&#123;</div><div class="line">			f[f1]=f2;</div><div class="line">			rank[f2]+=rank[f1];</div><div class="line">		&#125;</div><div class="line">		return 1;//挂上去</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>对于大部分的并查集问题来说，路径压缩就已经足够了，不需要按秩合并，有的时候是因为防止爆栈所以需要用非递归版的并查集或者用按秩合并。但是极端情况下，同时用上路径压缩和按秩合并会减少更多的时间。</p>
+<p>4.并查集的删除<br>今日被一道<a href="http://acm.fzu.edu.cn/problem.php?pid=2155" target="_blank" rel="external">fzu2155</a>给坑到了，好吧，这个思路还是很清楚的，涨姿势了并查集的删除需要用一个real[]数组来记录一下真实位置在哪，如果删除一个点就把这个点的real位置移到最后端，这样在不影响原来并查集的基础上还能进行并查集的删除操作。<br>之后对于并查集的操作都是扔进去<strong>real[x]位置</strong>进行合并，查询。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">for(i=0;i&lt;n;i++)</div><div class="line">    f[i]=real[i]=i;//real[]和f[]一样的初始化</div><div class="line">int k=n;//k指向末尾</div><div class="line">if(cmd==&quot;union&quot;)</div><div class="line">&#123;</div><div class="line">    scanf(&quot;%d%d&quot;,&amp;a,&amp;b);</div><div class="line">    union(real[a],real[b]);//合并的时候合并真实位置</div><div class="line">&#125;</div><div class="line">else if(cmd==&quot;delete&quot;)</div><div class="line">&#123;</div><div class="line">    scanf(&quot;%d&quot;,tar);</div><div class="line">    f[k]=k;//将末尾的并查集f[]数组也初始化了</div><div class="line">    real[tar]=k++;//把要删除的该点real位置挂上去，也就是移动到最后</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="关系并查集-权重并查集"><a href="#关系并查集-权重并查集" class="headerlink" title="关系并查集(权重并查集)"></a>关系并查集(权重并查集)</h2><p>不得不说到poj上一道经典的并查集题目<a href="http://acm.pku.edu.cn/JudgeOnline/problem?id=1182" target="_blank" rel="external">食物链</a>，推测三种动物之间的关系，然后将并查集储存的元素加上储存父亲结点和相互之间的关系(也就是存边)，推出两个式子。然后就可以判断了，下面贴出代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;stdio.h&gt;</div><div class="line">#include&lt;string&gt;</div><div class="line">#include&lt;string.h&gt;</div><div class="line">#include&lt;algorithm&gt;</div><div class="line">#include&lt;cmath&gt;</div><div class="line">#include&lt;queue&gt;</div><div class="line">#include&lt;stack&gt;</div><div class="line">#include&lt;map&gt;</div><div class="line">using namespace std;</div><div class="line">struct node</div><div class="line">&#123;</div><div class="line">    int parent;</div><div class="line">    int relation;</div><div class="line">&#125;f[50005];</div><div class="line">int finding(int x)</div><div class="line">&#123;</div><div class="line">    if(x!=f[x].parent)</div><div class="line">    &#123;</div><div class="line">        int temp;</div><div class="line">        temp=f[x].parent;//必须加temp来存</div><div class="line">        f[x].parent=finding(temp);//路径压缩找父亲</div><div class="line">        f[x].relation=(f[temp].relation+f[x].relation)%3;///更新</div><div class="line">        //root-&gt;x=root-&gt;x.father+x.father-&gt;x</div><div class="line">        return f[x].parent;</div><div class="line">    &#125;</div><div class="line">    return x;</div><div class="line">&#125;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    int n,k,cot=0,i,x,y,root1,root2,d;</div><div class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;k);</div><div class="line">    for(i=0;i&lt;=n;i++)</div><div class="line">        &#123;f[i].parent=i;f[i].relation=0;&#125;</div><div class="line">    while(k--)</div><div class="line">    &#123;</div><div class="line">        scanf(&quot;%d%d%d&quot;,&amp;d,&amp;x,&amp;y);</div><div class="line">        if(x&gt;n||y&gt;n)</div><div class="line">            &#123;cot++;continue;&#125;</div><div class="line">        root1=finding(x);</div><div class="line">        root2=finding(y);</div><div class="line">        if(root1!=root2) &#123;//不在同一集合中,把root2挂到root1上</div><div class="line">                f[root2].parent=root1;//更新root1-&gt;root2的关系</div><div class="line">                f[root2].relation=(f[x].relation+(d-1)+(3-f[y].relation))%3;</div><div class="line">                //root1-&gt;root2=root1-&gt;x+x-&gt;y+y-&gt;root2</div><div class="line">            &#125;</div><div class="line">        else &#123;//在同一集合里</div><div class="line">            if(d==1) &#123;</div><div class="line">                if(f[x].relation!=f[y].relation)</div><div class="line">                    &#123;cot++;continue;&#125;</div><div class="line">            &#125;</div><div class="line">            else &#123;</div><div class="line">                if((3-f[x].relation+f[y].relation)%3!=1)///x-&gt;y=x-&gt;root+root-&gt;y</div><div class="line">                    &#123;cot++;continue;&#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    printf(&quot;%d\n&quot;,cot);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><p>这是图论中计算最小生成树的算法，将在图论文章中讲述。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/11/hello-acm/" rel="next" title="Hello ACM">
+                <i class="fa fa-chevron-left"></i> Hello ACM
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/24/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="MX Lin" />
+          <p class="site-author-name" itemprop="name">MX Lin</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关系并查集-权重并查集"><span class="nav-number">2.1.</span> <span class="nav-text">关系并查集(权重并查集)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kruskal算法"><span class="nav-number">2.2.</span> <span class="nav-text">Kruskal算法</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MX Lin</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
