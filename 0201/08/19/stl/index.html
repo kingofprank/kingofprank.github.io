@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/0201/08/19/stl/index.html">
 <meta property="og:site_name" content="Kingofprank">
 <meta property="og:description" content="STL大法好，不论速度还是简单程度，以及安全性都是相当的可靠的。认真学习库！！">
-<meta property="og:updated_time" content="2015-10-08T14:30:36.572Z">
+<meta property="og:updated_time" content="2016-07-25T08:07:06.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL库">
 <meta name="twitter:description" content="STL大法好，不论速度还是简单程度，以及安全性都是相当的可靠的。认真学习库！！">
@@ -101,7 +101,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -288,20 +288,20 @@
 <p>在C++标准中，STL被组织为下面的17个头文件：<algorithm>、<deque>、<functional>、<iterator>、<array>、<vector>、<list>、<forward_list>、<map>、<unordered_map>、<memory>、<numeric>、<queue>、<set>、<unordered_set>、<stack>和<utility>。</utility></stack></unordered_set></set></queue></numeric></memory></unordered_map></map></forward_list></list></vector></array></iterator></functional></deque></algorithm></p>
 <p>STL可分为容器(containers)、迭代器(iterators)、空间配置器(allocator)、配接器(adapters)、算法(algorithms)、仿函数(functors)六个部分。</p>
 <h1 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h1><p>所谓的动态数组库就是以链表为基础构建的，可以随意的插入和删除结点，充分利用空间，经常用它来做邻接表(其实是我习惯，也有用链式前向星的)。</p>
-<p>一般来说构建数组都是用以下方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vector&lt;int&gt;G[maxn];//普通的邻接表</div><div class="line"></div><div class="line">struct edge&#123;</div><div class="line">	int to,cost;</div><div class="line">&#125;</div><div class="line">vector&lt;edge&gt;G[maxn];//带属性的邻接表</div></pre></td></tr></table></figure></p>
-<p>初始化根据有向和无向用插入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">G[a].push_back(b);</div><div class="line">G[b].push_back(a);</div></pre></td></tr></table></figure></p>
-<p>注意！有时候邻接表要判重边，自环。自环好判，重边只能遍历判<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for(i=0;i&lt;G[temp].size();i++)</div><div class="line">	if(G[temp][i]==b)</div><div class="line">		&#123;mark=1;break;&#125;</div><div class="line">if(!mark)&#123;</div><div class="line">	.....&#125;</div></pre></td></tr></table></figure></p>
-<p>清空的时候根据情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for(i=0;i&lt;=n;i++)</div><div class="line">	G[i].clear();</div></pre></td></tr></table></figure></p>
+<p>一般来说构建数组都是用以下方式<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;G[maxn];<span class="comment">//普通的邻接表</span></div><div class="line"></div><div class="line"><span class="keyword">struct</span> edge&#123;</div><div class="line">	<span class="keyword">int</span> to,cost;</div><div class="line">&#125;</div><div class="line"><span class="built_in">vector</span>&lt;edge&gt;G[maxn];<span class="comment">//带属性的邻接表</span></div></pre></td></tr></table></figure></p>
+<p>初始化根据有向和无向用插入<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">G[a].push_back(b);</div><div class="line">G[b].push_back(a);</div></pre></td></tr></table></figure></p>
+<p>注意！有时候邻接表要判重边，自环。自环好判，重边只能遍历判<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;G[temp].size();i++)</div><div class="line">	<span class="keyword">if</span>(G[temp][i]==b)</div><div class="line">		&#123;mark=<span class="number">1</span>;<span class="keyword">break</span>;&#125;</div><div class="line"><span class="keyword">if</span>(!mark)&#123;</div><div class="line">	.....&#125;</div></pre></td></tr></table></figure></p>
+<p>清空的时候根据情况<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=n;i++)</div><div class="line">	G[i].clear();</div></pre></td></tr></table></figure></p>
 <p>vector一般只会用到这些，已经很足够了，不论是初始化，查找定位，还是删除，这些都是基础的操作。但是其实vector还有一些很方便的接口，后续逐渐补充。</p>
 <h1 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h1><p>该头文件下最常用的就是priority_queue和queue这两个了，优先队列和普通队列是BFS的神器啊，本质也是链表作的，所以如果频繁的删减其实速度还是没有手动模拟的快的。</p>
 <h1 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h1><h1 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h1><h1 id="map"><a href="#map" class="headerlink" title="map"></a>map</h1><p>map其实是一种关联容器，存储相结合形成的一个关键值和映射值的元素，值的类型为<code>pair&lt;const Key,Data&gt;</code>,一般写法是<code>map&lt;Key,Data,Compare,Alloc&gt;G</code>，map是由红黑树而作，用来方便的储存和检索，在map中插入和删除对象，不会使任何迭代器失效，仍然指向原来的元素，除非删除的是正被指向的元素的时候才会失效。</p>
 <h2 id="模板参数："><a href="#模板参数：" class="headerlink" title="模板参数："></a>模板参数：</h2><p>key：关键值的类型。在map对象中的每个元素是通过该关键值唯一确定元素的。</p>
 <p>T：映射值的类型。在map中的每个元素是用来储存一些数据作为其映射值。</p>
 <p>compare：Comparison类：A类键的类型，它有两个参数，并返回一个bool。表达comp（A，B），comp是这比较类A和B是关键值的对象，应返回true，如果是在早先的立场比B放置在一个严格弱排序操作。这可以是一个类实现一个函数调用运算符或一个函数的指针（见一个例子构造）。默认的对于<key>，返回申请小于操作符相同的默认值（A &lt;B）。<br>Map对象使用这个表达式来确定在容器中元素的位置。以下这个规则在任何时候都排列在map容器中的所有元素。</key></p>
-<p>map可以将插入的int,char*类型按照数字顺序，字典序排序，写法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">struct cmp</div><div class="line">&#123;</div><div class="line">	bool operator()(const char* s1,const char* s2)</div><div class="line">	&#123;</div><div class="line">		return strcmp(s1,s2)&lt;0;//从小到大按照字典序</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">map&lt;const char*,int,cmp&gt; G;</div></pre></td></tr></table></figure></p>
+<p>map可以将插入的int,char*类型按照数字顺序，字典序排序，写法为<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> cmp</div><div class="line">&#123;</div><div class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* s1,<span class="keyword">const</span> <span class="keyword">char</span>* s2)</span></span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> <span class="built_in">strcmp</span>(s1,s2)&lt;<span class="number">0</span>;<span class="comment">//从小到大按照字典序</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*,<span class="keyword">int</span>,cmp&gt; G;</div></pre></td></tr></table></figure></p>
 <p>Allocator：用于定义存储分配模型分配器对象的类型。默认情况下，分配器类模板，它定义了最简单的内存分配模式，是值独立的。</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="map的遍历"><a href="#map的遍历" class="headerlink" title="map的遍历"></a>map的遍历</h3><p>有两种遍历形式，正向和反向<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">map&lt;Key,Data&gt;::iterator it;//正向迭代器</div><div class="line">for(it=G.begin();it!=G.end();it++)&#123;...&#125;</div><div class="line"></div><div class="line">map&lt;Key,Data&gt;::reverse_iterator it;//反向迭代器</div><div class="line">for(it=G.rbegin();it!=rend();it++)&#123;...&#125;//注意此处还是it++，这个只是一个对迭代器的重载，并不是真正的自加</div><div class="line"></div><div class="line">it-&gt;first;//指向Key</div><div class="line">it-&gt;second;//指向Data</div></pre></td></tr></table></figure></p>
-<h3 id="map的插入"><a href="#map的插入" class="headerlink" title="map的插入"></a>map的插入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">G[&apos;a&apos;]=100;</div><div class="line"></div><div class="line">G.insert(std::pair&lt;char,int&gt;(&apos;a&apos;,100));</div></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="map的遍历"><a href="#map的遍历" class="headerlink" title="map的遍历"></a>map的遍历</h3><p>有两种遍历形式，正向和反向<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">map</span>&lt;Key,Data&gt;::iterator it;<span class="comment">//正向迭代器</span></div><div class="line"><span class="keyword">for</span>(it=G.begin();it!=G.end();it++)&#123;...&#125;</div><div class="line"></div><div class="line"><span class="built_in">map</span>&lt;Key,Data&gt;::reverse_iterator it;<span class="comment">//反向迭代器</span></div><div class="line"><span class="keyword">for</span>(it=G.rbegin();it!=rend();it++)&#123;...&#125;<span class="comment">//注意此处还是it++，这个只是一个对迭代器的重载，并不是真正的自加</span></div><div class="line"></div><div class="line">it-&gt;first;<span class="comment">//指向Key</span></div><div class="line">it-&gt;second;<span class="comment">//指向Data</span></div></pre></td></tr></table></figure></p>
+<h3 id="map的插入"><a href="#map的插入" class="headerlink" title="map的插入"></a>map的插入</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">G[<span class="string">'a'</span>]=<span class="number">100</span>;</div><div class="line"></div><div class="line">G.insert(<span class="built_in">std</span>::pair&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt;(<span class="string">'a'</span>,<span class="number">100</span>));</div></pre></td></tr></table></figure>
 <h1 id="set"><a href="#set" class="headerlink" title="set"></a>set</h1><h1 id="list"><a href="#list" class="headerlink" title="list"></a>list</h1>
       
     </div>
@@ -405,7 +405,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -433,6 +433,32 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lyeec.me" title="Lyeec's Blog" target="_blank">Lyeec's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://dbwater.net" title="Dbwater's Blog" target="_blank">Dbwater's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hust.edu.cn/vjudge/toIndex.action" title="Virtual Judge" target="_blank">Virtual Judge</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
       </section>
@@ -462,7 +488,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>

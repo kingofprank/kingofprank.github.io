@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/08/12/stdio/index.html">
 <meta property="og:site_name" content="Kingofprank">
 <meta property="og:description" content="各种输入输出大法，控制格式是AC的第一步。">
-<meta property="og:updated_time" content="2016-07-25T04:49:47.903Z">
+<meta property="og:updated_time" content="2016-07-25T08:06:34.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="输入和输出">
 <meta name="twitter:description" content="各种输入输出大法，控制格式是AC的第一步。">
@@ -101,7 +101,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -285,7 +285,7 @@
       
         <p>各种输入输出大法，控制格式是AC的第一步。<br><a id="more"></a></p>
 <h1 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h1><h2 id="scanf"><a href="#scanf" class="headerlink" title="scanf"></a>scanf</h2><p>scanf是最经常用到的一种输入格式，便于控制，速度快。</p>
-<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">scanf(&quot;&lt;格式说明字符串&gt;&quot;,&lt;变量地址&gt;);</div><div class="line">常用说明字符串:</div><div class="line">%d//int		%lld//long long int		%f//float		%lf//double</div><div class="line">%s//字符串	%c//字符</div></pre></td></tr></table></figure>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">scanf</span>(<span class="string">"&lt;格式说明字符串&gt;"</span>,&lt;变量地址&gt;);</div><div class="line">常用说明字符串:</div><div class="line">%d<span class="comment">//int		%lld//long long int		%f//float		%lf//double</span></div><div class="line">%s<span class="comment">//字符串	%c//字符</span></div></pre></td></tr></table></figure>
 <h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>scanf返回<strong>成功赋值的数据项数</strong>，读到文件末尾出错时则返回EOF。成功的项数意味着，如果成功读入一项则返回1，两项则返回2。注意<strong>EOF就是-1，意味着末尾，需要注意的是EOF不是文件自带的，它是一个函数，当文件读到最后一个字符的时候还没有返回，文件继续读，发现已经没有可以读取的字符的时候，调用EOF函数返回-1</strong></p>
 <h3 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h3><ul>
 <li><p>用<code>scanf(&quot;%s&quot;,s)</code>在读字符串的时候读到<code>space、&#39;\n&#39;、&#39;\0&#39;</code>就停止，并在字符串的末尾补充上一个’\0’，但并不会吃掉’\n’，所以要注意如果下面有需要的话要把换行符用getchar()吃掉。</p>
@@ -300,20 +300,20 @@
 </li>
 </ul>
 <h2 id="getchar"><a href="#getchar" class="headerlink" title="getchar"></a>getchar</h2><p>getchar是一种方便的读取字符的输入形式，只会读取单个字符，经常用于<code>scanf(&quot;%c&quot;,&amp;s)</code>前后的吃掉换行的工作。</p>
-<h3 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getchar(stdin)；</div></pre></td></tr></table></figure>
+<h3 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getchar(<span class="built_in">stdin</span>)；</div></pre></td></tr></table></figure>
 <h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><p>返回一个int形的整数，ascii码，出错返回-1。</p>
 <h3 id="细节-1"><a href="#细节-1" class="headerlink" title="细节"></a>细节</h3><ul>
 <li>可以用于调试的时候暂停</li>
 </ul>
 <h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p>cin是一种输入流,写法比较方便,不必控制格式，但是速度稍微慢点，大数据情况不建议使用，string类只能用cin来输入。</p>
-<h3 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cin&gt;&gt;temp;</div></pre></td></tr></table></figure>
+<h3 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cin</span>&gt;&gt;temp;</div></pre></td></tr></table></figure>
 <h3 id="细节-2"><a href="#细节-2" class="headerlink" title="细节"></a>细节</h3><ul>
 <li><p>cin是一个类,这个类重载了’&gt;&gt;’这个操作符。</p>
 </li>
 <li><p>cin会首先读取缓存区的内容，所以如果缓存区内容错误，有可能陷入死循环，用<code>cin.clear()</code>来清空缓存区。 </p>
 </li>
 <li><p>cin读取到<code>space、&#39;\n&#39;</code>就停止，与scanf不同的是，cin丢弃缓冲区内的空格和换行，也就是说cin不读入换行和空格。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">char s[100],temp;</div><div class="line">cin&gt;&gt;s&gt;&gt;temp;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> s[<span class="number">100</span>],temp;</div><div class="line"><span class="built_in">cin</span>&gt;&gt;s&gt;&gt;temp;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>当输入<code>&#39;123 1\n&#39;</code>或者<code>&#39;123\n1\n&#39;</code>的时候,s=123,temp=1，空格和换行都被丢弃。</p>
@@ -321,19 +321,19 @@
 <li>cin是可以加速的，因为默认的时候cin和stdin保持同步，这是为了兼容，保证文件指针不会混乱，但是这个开销其实可以禁止。只需要加上<code>std::ios::sync_with_stdio(false);</code>这个语句就可以取消同步，速度堪比scanf，但是要注意不要与scanf混用。</li>
 </ul>
 <h2 id="gets"><a href="#gets" class="headerlink" title="gets"></a>gets</h2><p>gets用来强制读取一行字符，读取到换行符为止，中间的空格都读进来</p>
-<h3 id="格式-3"><a href="#格式-3" class="headerlink" title="格式"></a>格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gets(s);</div></pre></td></tr></table></figure>
+<h3 id="格式-3"><a href="#格式-3" class="headerlink" title="格式"></a>格式</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gets(s);</div></pre></td></tr></table></figure>
 <h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p>gets的返回值是指针，当读取错误的时候返回NULL。</p>
 <h3 id="细节-3"><a href="#细节-3" class="headerlink" title="细节"></a>细节</h3><ul>
 <li>gets()会吃掉<code>&#39;\n&#39;</code>，但是会用<code>&#39;\0&#39;</code>代替掉，也就是说gets()读取完一行后强制在结尾加上<code>&#39;\0&#39;</code>，舍弃掉<code>&#39;\n&#39;</code>。<code>&#39;\n&#39;</code>不会留在缓存区。经常用来强制读一行，很方便。</li>
 </ul>
 <h1 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h1><h2 id="printf"><a href="#printf" class="headerlink" title="printf"></a>printf</h2><p>这个是最经常用到的输出，可以很方便的控制格式。</p>
-<h3 id="格式-4"><a href="#格式-4" class="headerlink" title="格式"></a>格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">printf(&quot;%d&quot;,d);</div></pre></td></tr></table></figure>
+<h3 id="格式-4"><a href="#格式-4" class="headerlink" title="格式"></a>格式</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,d);</div></pre></td></tr></table></figure>
 <h3 id="返回值-3"><a href="#返回值-3" class="headerlink" title="返回值"></a>返回值</h3><p>printf函数类型为整形，返回值为实际控制输出的字符数。</p>
 <h3 id="细节-4"><a href="#细节-4" class="headerlink" title="细节"></a>细节</h3><ul>
 <li>用<code>&quot;%m.n&quot;</code>来控制输出宽度和保留小数点的精度。</li>
 </ul>
 <h2 id="cout"><a href="#cout" class="headerlink" title="cout"></a>cout</h2><p>较少使用，因为速度慢。但是方便。如果有string只能用cout输出，可以加速。</p>
-<h3 id="格式-5"><a href="#格式-5" class="headerlink" title="格式"></a>格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cout&lt;&lt;s&lt;&lt;endl;//endl用来输出一个回车</div></pre></td></tr></table></figure>
+<h3 id="格式-5"><a href="#格式-5" class="headerlink" title="格式"></a>格式</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//endl用来输出一个回车</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -447,7 +447,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -475,6 +475,32 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lyeec.me" title="Lyeec's Blog" target="_blank">Lyeec's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://dbwater.net" title="Dbwater's Blog" target="_blank">Dbwater's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hust.edu.cn/vjudge/toIndex.action" title="Virtual Judge" target="_blank">Virtual Judge</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
       </section>
@@ -504,7 +530,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>

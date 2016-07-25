@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/08/18/toplogical-sort/index.html">
 <meta property="og:site_name" content="Kingofprank">
 <meta property="og:description" content="刚学到了一招关于拓扑排序的东西，就来兴致写这个了。">
-<meta property="og:updated_time" content="2015-08-18T05:40:52.712Z">
+<meta property="og:updated_time" content="2016-07-25T08:07:36.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拓扑排序">
 <meta name="twitter:description" content="刚学到了一招关于拓扑排序的东西，就来兴致写这个了。">
@@ -101,7 +101,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -285,12 +285,12 @@
       
         <p>刚学到了一招关于拓扑排序的东西，就来兴致写这个了。<br><a id="more"></a></p>
 <h1 id="关于拓扑排序"><a href="#关于拓扑排序" class="headerlink" title="关于拓扑排序"></a>关于拓扑排序</h1><h1 id="拓扑排序的实现"><a href="#拓扑排序的实现" class="headerlink" title="拓扑排序的实现"></a>拓扑排序的实现</h1><p>实现有分储存实现和算法实现，储存实现有用邻接矩阵和邻接表两种，算法实现我这里就列举出来用两重for循环和用队列实现的两种，本质上都是BFS，但其实还有一种是用DFS来实现，觉得可能会爆栈，以后再学吧。</p>
-<h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><p>没什么好讲的，用起来十分方便，不爆空间的时候很好用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">构造：</div><div class="line">int map[maxn][maxn];//最普通的邻接矩阵</div><div class="line"></div><div class="line">struct node</div><div class="line">&#123;</div><div class="line">	int nature;//记录属性</div><div class="line">&#125;</div><div class="line">node map[maxn][maxn];//带属性的邻接矩阵</div><div class="line"></div><div class="line">储存：</div><div class="line">map[i][j]=1;//直接存</div></pre></td></tr></table></figure></p>
-<h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><p>压缩存储大杀器，瞬间就下降了存储量了，我用的是vector来实现的，也可以手写链表，也可以用一个数组来存，需要手写一个head[]指向边。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">vector&lt;int&gt;map[maxn];</div><div class="line"></div><div class="line">struct node</div><div class="line">&#123;</div><div class="line">	int j,nature;</div><div class="line">&#125;</div><div class="line">vector&lt;node&gt;map[maxn];//带属性的邻接表</div><div class="line"></div><div class="line">普通储存：</div><div class="line">map[i].push_back(j);//注意存下来的**值**是j，实际上的位置不是第j个位置，要从头找</div><div class="line"></div><div class="line">普通的查询只需要</div><div class="line">for(i=0;i&lt;map[temp].size();i++)</div><div class="line">cout&lt;&lt;temp&lt;&lt;map[temp][i]&lt;&lt;endl;</div><div class="line"></div><div class="line">多属性存储：</div><div class="line">node temp;</div><div class="line">temp.j=j;temp.nature=nature;//赋值</div><div class="line">map[i].push_back(temp);//压进去</div><div class="line"></div><div class="line">对于这种多属性的数组来说查询要用</div><div class="line">for(i=0;i&lt;map[temp].size();i++)</div><div class="line">cout&lt;&lt;temp&lt;&lt;map[temp][i].j&lt;&lt;map[temp][i].nature&lt;&lt;endl;</div></pre></td></tr></table></figure></p>
+<h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><p>没什么好讲的，用起来十分方便，不爆空间的时候很好用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">构造：</div><div class="line"><span class="keyword">int</span> <span class="built_in">map</span>[maxn][maxn];<span class="comment">//最普通的邻接矩阵</span></div><div class="line"></div><div class="line"><span class="keyword">struct</span> node</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> nature;<span class="comment">//记录属性</span></div><div class="line">&#125;</div><div class="line">node <span class="built_in">map</span>[maxn][maxn];<span class="comment">//带属性的邻接矩阵</span></div><div class="line"></div><div class="line">储存：</div><div class="line"><span class="built_in">map</span>[i][j]=<span class="number">1</span>;<span class="comment">//直接存</span></div></pre></td></tr></table></figure></p>
+<h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><p>压缩存储大杀器，瞬间就下降了存储量了，我用的是vector来实现的，也可以手写链表，也可以用一个数组来存，需要手写一个head[]指向边。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;<span class="built_in">map</span>[maxn];</div><div class="line"></div><div class="line"><span class="keyword">struct</span> node</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> j,nature;</div><div class="line">&#125;</div><div class="line"><span class="built_in">vector</span>&lt;node&gt;<span class="built_in">map</span>[maxn];<span class="comment">//带属性的邻接表</span></div><div class="line"></div><div class="line">普通储存：</div><div class="line"><span class="built_in">map</span>[i].push_back(j);<span class="comment">//注意存下来的**值**是j，实际上的位置不是第j个位置，要从头找</span></div><div class="line"></div><div class="line">普通的查询只需要</div><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="built_in">map</span>[temp].size();i++)</div><div class="line"><span class="built_in">cout</span>&lt;&lt;temp&lt;&lt;<span class="built_in">map</span>[temp][i]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"></div><div class="line">多属性存储：</div><div class="line">node temp;</div><div class="line">temp.j=j;temp.nature=nature;<span class="comment">//赋值</span></div><div class="line"><span class="built_in">map</span>[i].push_back(temp);<span class="comment">//压进去</span></div><div class="line"></div><div class="line">对于这种多属性的数组来说查询要用</div><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="built_in">map</span>[temp].size();i++)</div><div class="line"><span class="built_in">cout</span>&lt;&lt;temp&lt;&lt;<span class="built_in">map</span>[temp][i].j&lt;&lt;<span class="built_in">map</span>[temp][i].nature&lt;&lt;<span class="built_in">endl</span>;</div></pre></td></tr></table></figure></p>
 <h2 id="队列实现"><a href="#队列实现" class="headerlink" title="队列实现"></a>队列实现</h2><p>自从学会这个以后妈妈再也不用担心我背又长又臭的模板了,用优先队列解决输出顺序问题，用普通队列解决是否有环的问题。</p>
-<p>1.队列的设定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">priority_queue&lt;int,vector&lt;int&gt;,cmp&gt;q;//可以改成自己设定的属性</div><div class="line"></div><div class="line">这里可以用&lt;functional&gt;这个库解决普通类型的排序问题</div><div class="line">可以用 greater&lt;int&gt; 从小到大排序，less&lt;int&gt;从大到小排序</div><div class="line">默认的是从大到小的大根堆。</div><div class="line"></div><div class="line">或者自写排序，在struct类型里面自己写</div><div class="line">struct node</div><div class="line">&#123;</div><div class="line">	int x;</div><div class="line">	friend bool opreator &lt;(node a,node b)//友元函数，只能重载小于号</div><div class="line">	&#123;</div><div class="line">		return a.x&lt;b.x;//这样是从大到小，也就是默认状态</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>2.队列排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">void topsort()</div><div class="line">&#123;</div><div class="line">	for(i=1;i&lt;=n;i++)</div><div class="line">		if(degree[i]==0)</div><div class="line">			q.push(i);</div><div class="line">	while(!q.empty())</div><div class="line">	&#123;</div><div class="line">		temp=q.top();//注意优先队列只提供top(),普通队列提供q.front()</div><div class="line">		//output[cot++]=temp;把要输出的存下来，控制各式再输出</div><div class="line">		q.pop();</div><div class="line">		for(i=0;i&lt;map[temp].size;i++)</div><div class="line">			if(--degree[map[temp][i]]==0)</div><div class="line">				q.push(map[temp][i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这里要提醒一下，如果要判有没有重边的话，只能for一遍，比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">scanf(&quot;%d%d&quot;,&amp;a,&amp;b);</div><div class="line">for(i=0;i&lt;map[a].size();i++)</div><div class="line">	if(map[a][i]==b)</div><div class="line">		&#123;mark=1;break;&#125;</div><div class="line">if(!mark)</div><div class="line">	map[a].push_back(b);</div></pre></td></tr></table></figure></p>
+<p>1.队列的设定<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">priority_queue&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;,cmp&gt;q;<span class="comment">//可以改成自己设定的属性</span></div><div class="line"></div><div class="line">这里可以用&lt;functional&gt;这个库解决普通类型的排序问题</div><div class="line">可以用 greater&lt;<span class="keyword">int</span>&gt; 从小到大排序，less&lt;<span class="keyword">int</span>&gt;从大到小排序</div><div class="line">默认的是从大到小的大根堆。</div><div class="line"></div><div class="line">或者自写排序，在<span class="keyword">struct</span>类型里面自己写</div><div class="line"><span class="keyword">struct</span> node</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> x;</div><div class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> opreator &lt;(node a,node b)<span class="comment">//友元函数，只能重载小于号</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> a.x&lt;b.x;<span class="comment">//这样是从大到小，也就是默认状态</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.队列排序<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">topsort</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">		<span class="keyword">if</span>(degree[i]==<span class="number">0</span>)</div><div class="line">			q.push(i);</div><div class="line">	<span class="keyword">while</span>(!q.empty())</div><div class="line">	&#123;</div><div class="line">		temp=q.top();<span class="comment">//注意优先队列只提供top(),普通队列提供q.front()</span></div><div class="line">		<span class="comment">//output[cot++]=temp;把要输出的存下来，控制各式再输出</span></div><div class="line">		q.pop();</div><div class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="built_in">map</span>[temp].size;i++)</div><div class="line">			<span class="keyword">if</span>(--degree[<span class="built_in">map</span>[temp][i]]==<span class="number">0</span>)</div><div class="line">				q.push(<span class="built_in">map</span>[temp][i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里要提醒一下，如果要判有没有重边的话，只能for一遍，比如<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</div><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="built_in">map</span>[a].size();i++)</div><div class="line">	<span class="keyword">if</span>(<span class="built_in">map</span>[a][i]==b)</div><div class="line">		&#123;mark=<span class="number">1</span>;<span class="keyword">break</span>;&#125;</div><div class="line"><span class="keyword">if</span>(!mark)</div><div class="line">	<span class="built_in">map</span>[a].push_back(b);</div></pre></td></tr></table></figure></p>
 <p>以上就是暂且学到的东西，之后学到会继续更新</p>
 <h2 id="循环实现"><a href="#循环实现" class="headerlink" title="循环实现"></a>循环实现</h2>
       
@@ -405,7 +405,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -433,6 +433,32 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lyeec.me" title="Lyeec's Blog" target="_blank">Lyeec's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://dbwater.net" title="Dbwater's Blog" target="_blank">Dbwater's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hust.edu.cn/vjudge/toIndex.action" title="Virtual Judge" target="_blank">Virtual Judge</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
       </section>
@@ -462,7 +488,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>

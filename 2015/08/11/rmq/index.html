@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/08/11/rmq/index.html">
 <meta property="og:site_name" content="Kingofprank">
 <meta property="og:description" content="简要说明一下RMQ问题所用的ST算法">
-<meta property="og:updated_time" content="2016-07-25T04:00:51.846Z">
+<meta property="og:updated_time" content="2016-07-25T08:06:01.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RMQ和ST算法">
 <meta name="twitter:description" content="简要说明一下RMQ问题所用的ST算法">
@@ -101,7 +101,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -288,11 +288,11 @@
 <p>下面介绍ST算法(sparse-table),主要思想就是动态规划,以O(logn)的时间预处理,n次询问用O(1)的时间回答,时间复杂度为O(nlogn)</p>
 <p>F[i,j]表示为从第i个数开始(包含自己),连续2^j个数中的最大值或者最小值。也就是从<strong>[i,i+2^j-1]</strong>区间。</p>
 <p>很显然F[i,0]就等于A[i]本身,这便是初值。状态转移方程,把F[i,j]分成两段<strong>[i,i+2^(j-1)-1]</strong>和<strong>[i+2^(j-1),i+2^j-1]</strong>,每个区间长都为<strong>2^(j-1)</strong>。</p>
-<p>于是动态规划的方程<strong>F[i,j]=max/min(F[i,j-1],F[i+2^(j-1),j-1])</strong>,下面进行DP就可以了，以下是伪代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for i : 1 to n</div><div class="line">	F[i][0]=A[i]//初始化</div><div class="line">for j : 1 to log(n)/log(2)</div><div class="line">	for i : 1 to (n-1+2^i)</div><div class="line">		F[i][j]=max/min(F[i][j-1],F[i+2^(j-1)][j-1])</div></pre></td></tr></table></figure></p>
-<p>下面便是查询RMQ(i,j)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">k=log(j-i+1)/log2</div><div class="line">return max/min(F[i][k],F[j-2^k+1][k])</div></pre></td></tr></table></figure></p>
-<p>因为计算k用log时间会花的稍微长一些可以用来优化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">k=0;x=2;range=j-i+1;</div><div class="line">while(x&lt;=range)&#123;k++;x&lt;&lt;=1;&#125;</div></pre></td></tr></table></figure></p>
-<p>下面给出模板,b可以当做全局变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">int dp[100][100];</div><div class="line">void markrmq(int n,int b[])//n是长度,b是要求的数组,从b[0]开始放置,达不到n</div><div class="line">&#123;</div><div class="line">    int i,j;</div><div class="line">    for(i=0;i&lt;n;i++)</div><div class="line">        dp[i][0]=b[i];</div><div class="line">    for(j=1;(1&lt;&lt;j)&lt;=n;j++)</div><div class="line">        for(i=0;i+(1&lt;&lt;j)-1&lt;n;i++)</div><div class="line">            dp[i][j]=min(dp[i][j-1],dp[i+(1&lt;&lt;(j-1))][j-1]);</div><div class="line">&#125;</div><div class="line">int rmq(int i,int j)</div><div class="line">&#123;</div><div class="line">    int k=(int)(log((j-i+1)*1.0)/log(2.0));</div><div class="line">    return min(dp[i][k],dp[j-(1&lt;&lt;k)+1][k]);</div><div class="line">&#125;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    int i,j;</div><div class="line">    int b[10]=&#123;10,1,45,23,14,5,68,5,9,7&#125;;</div><div class="line">    markrmq(10,b);</div><div class="line">    while(~scanf(&quot;%d%d&quot;,&amp;i,&amp;j))</div><div class="line">    &#123;</div><div class="line">        cout&lt;&lt;rmq(i,j)&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>返回最小值的下标,其实和RMQ一模一样,只是把dp里面存的是最小值改成最小值下标了,同理b[]可以作为全局变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">void makeRmqIndex(int n,int b[]) //返回最小值对应的下标</div><div class="line">&#123;</div><div class="line">    int i,j;</div><div class="line">    for(i=0;i&lt;n;i++)</div><div class="line">        dp[i][0]=i;</div><div class="line">    for(j=1;(1&lt;&lt;j)&lt;=n;j++)</div><div class="line">        for(i=0;i+(1&lt;&lt;j)-1&lt;n;i++)</div><div class="line">            dp[i][j]=b[dp[i][j-1]] &lt; b[dp[i+(1&lt;&lt;(j-1))][j-1]]? dp[i][j-1]:dp[i+(1&lt;&lt;(j-1))][j-1];//RMQ比较的是两个dp的值,这里比较的是两个区间最小值返回更小的那个的下标</div><div class="line">&#125;</div><div class="line">int rmqIndex(int s,int v,int b[])</div><div class="line">&#123;</div><div class="line">    int k=(int)(log((v-s+1)*1.0)/log(2.0));</div><div class="line">    return b[dp[s][k]]&lt;b[dp[v-(1&lt;&lt;k)+1][k]]? dp[s][k]:dp[v-(1&lt;&lt;k)+1][k];//返回下标</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>于是动态规划的方程<strong>F[i,j]=max/min(F[i,j-1],F[i+2^(j-1),j-1])</strong>,下面进行DP就可以了，以下是伪代码。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i : <span class="number">1</span> to n</div><div class="line">	F[i][<span class="number">0</span>]=A[i]<span class="comment">//初始化</span></div><div class="line"><span class="keyword">for</span> j : <span class="number">1</span> to <span class="built_in">log</span>(n)/<span class="built_in">log</span>(<span class="number">2</span>)</div><div class="line">	<span class="keyword">for</span> i : <span class="number">1</span> to (n<span class="number">-1</span>+<span class="number">2</span>^i)</div><div class="line">		F[i][j]=max/min(F[i][j<span class="number">-1</span>],F[i+<span class="number">2</span>^(j<span class="number">-1</span>)][j<span class="number">-1</span>])</div></pre></td></tr></table></figure></p>
+<p>下面便是查询RMQ(i,j)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">k=<span class="built_in">log</span>(j-i+<span class="number">1</span>)/log2</div><div class="line"><span class="keyword">return</span> max/min(F[i][k],F[j<span class="number">-2</span>^k+<span class="number">1</span>][k])</div></pre></td></tr></table></figure></p>
+<p>因为计算k用log时间会花的稍微长一些可以用来优化<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">k=<span class="number">0</span>;x=<span class="number">2</span>;range=j-i+<span class="number">1</span>;</div><div class="line"><span class="keyword">while</span>(x&lt;=range)&#123;k++;x&lt;&lt;=<span class="number">1</span>;&#125;</div></pre></td></tr></table></figure></p>
+<p>下面给出模板,b可以当做全局变量<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> dp[<span class="number">100</span>][<span class="number">100</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">markrmq</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> b[])</span><span class="comment">//n是长度,b是要求的数组,从b[0]开始放置,达不到n</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        dp[i][<span class="number">0</span>]=b[i];</div><div class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;j)&lt;=n;j++)</div><div class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i+(<span class="number">1</span>&lt;&lt;j)<span class="number">-1</span>&lt;n;i++)</div><div class="line">            dp[i][j]=min(dp[i][j<span class="number">-1</span>],dp[i+(<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))][j<span class="number">-1</span>]);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">rmq</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> k=(<span class="keyword">int</span>)(<span class="built_in">log</span>((j-i+<span class="number">1</span>)*<span class="number">1.0</span>)/<span class="built_in">log</span>(<span class="number">2.0</span>));</div><div class="line">    <span class="keyword">return</span> min(dp[i][k],dp[j-(<span class="number">1</span>&lt;&lt;k)+<span class="number">1</span>][k]);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    <span class="keyword">int</span> b[<span class="number">10</span>]=&#123;<span class="number">10</span>,<span class="number">1</span>,<span class="number">45</span>,<span class="number">23</span>,<span class="number">14</span>,<span class="number">5</span>,<span class="number">68</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">7</span>&#125;;</div><div class="line">    markrmq(<span class="number">10</span>,b);</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;i,&amp;j))</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;rmq(i,j)&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>返回最小值的下标,其实和RMQ一模一样,只是把dp里面存的是最小值改成最小值下标了,同理b[]可以作为全局变量。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">makeRmqIndex</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> b[])</span> <span class="comment">//返回最小值对应的下标</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        dp[i][<span class="number">0</span>]=i;</div><div class="line">    <span class="keyword">for</span>(j=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;j)&lt;=n;j++)</div><div class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i+(<span class="number">1</span>&lt;&lt;j)<span class="number">-1</span>&lt;n;i++)</div><div class="line">            dp[i][j]=b[dp[i][j<span class="number">-1</span>]] &lt; b[dp[i+(<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))][j<span class="number">-1</span>]]? dp[i][j<span class="number">-1</span>]:dp[i+(<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))][j<span class="number">-1</span>];<span class="comment">//RMQ比较的是两个dp的值,这里比较的是两个区间最小值返回更小的那个的下标</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">rmqIndex</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> v,<span class="keyword">int</span> b[])</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> k=(<span class="keyword">int</span>)(<span class="built_in">log</span>((v-s+<span class="number">1</span>)*<span class="number">1.0</span>)/<span class="built_in">log</span>(<span class="number">2.0</span>));</div><div class="line">    <span class="keyword">return</span> b[dp[s][k]]&lt;b[dp[v-(<span class="number">1</span>&lt;&lt;k)+<span class="number">1</span>][k]]? dp[s][k]:dp[v-(<span class="number">1</span>&lt;&lt;k)+<span class="number">1</span>][k];<span class="comment">//返回下标</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -406,7 +406,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -434,6 +434,32 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lyeec.me" title="Lyeec's Blog" target="_blank">Lyeec's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://dbwater.net" title="Dbwater's Blog" target="_blank">Dbwater's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hust.edu.cn/vjudge/toIndex.action" title="Virtual Judge" target="_blank">Virtual Judge</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
       </section>
@@ -463,7 +489,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>

@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/08/17/trie-tree/index.html">
 <meta property="og:site_name" content="Kingofprank">
 <meta property="og:description" content="字典树属于树形数据结构之一，在省空间和时间上大有作为。">
-<meta property="og:updated_time" content="2015-08-17T02:34:08.857Z">
+<meta property="og:updated_time" content="2016-07-25T08:07:50.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TrieTree(字典树，前缀树)">
 <meta name="twitter:description" content="字典树属于树形数据结构之一，在省空间和时间上大有作为。">
@@ -101,7 +101,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -285,10 +285,10 @@
       
         <p>字典树属于树形数据结构之一，在省空间和时间上大有作为。<br><a id="more"></a></p>
 <h1 id="关于TrieTree"><a href="#关于TrieTree" class="headerlink" title="关于TrieTree"></a>关于TrieTree</h1><p>TrieTree是一种有序树，通常的键是字符串，但键不是直接保存在节点中，每个节点的所有子孙都有共同的前缀，根节点一般对应空字符串。Trie可以看作是一个确定有限状态自动机(DFA)。</p>
-<h1 id="TrieTree的实现"><a href="#TrieTree的实现" class="headerlink" title="TrieTree的实现"></a>TrieTree的实现</h1><h3 id="节点结构"><a href="#节点结构" class="headerlink" title="节点结构"></a>节点结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#define MAX 26//26个字母</div><div class="line">struct trienode</div><div class="line">&#123;</div><div class="line">	int ncount;//记录该节点出现过的次数</div><div class="line">	struct trienode *next[MAX];</div><div class="line">&#125;memory[1000000];//自己设定空间大小</div></pre></td></tr></table></figure>
-<h3 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">int allocp=0;</div><div class="line">trienode *createtrie()</div><div class="line">&#123;</div><div class="line">	trienode *temp=&amp;memory[allocp++];</div><div class="line">	temp-&gt;nconut=1;</div><div class="line">	for(int i=0;i&lt;MAX;i++)</div><div class="line">		temp-&gt;next[i]=NULL;</div><div class="line">	return temp;</div><div class="line">&#125;</div><div class="line">trienode *root=createtrie();//根节点设为全局变量，减少调用次数</div></pre></td></tr></table></figure>
-<h3 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">void inserttrie(char str[])//读入字符串</div><div class="line">&#123;</div><div class="line">	trienode *temp=root;</div><div class="line">	int i=0,k;</div><div class="line">	while(str[i])</div><div class="line">	&#123;</div><div class="line">		k=str[i]-&apos;a&apos;;//计算位置</div><div class="line">		if(temp-&gt;next[k])</div><div class="line">		&#123;</div><div class="line">			temp-&gt;next[k]-&gt;ncount++;</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">		&#123;</div><div class="line">			temp-&gt;next[k]=createtrie();</div><div class="line">		&#125;</div><div class="line">		temp=temp-&gt;next[k];</div><div class="line">		i++;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">int searchtrie(char str[])//读入字符串</div><div class="line">&#123;</div><div class="line">	if(root=NULL)</div><div class="line">		return 0;</div><div class="line">	trienode *temp=root;</div><div class="line">	int i=0,k;</div><div class="line">	while(str[i])</div><div class="line">	&#123;</div><div class="line">		k=str[i]-&apos;a&apos;;</div><div class="line">		if(temp-&gt;next[k])</div><div class="line">		&#123;</div><div class="line">			temp=temp-&gt;next[k];</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">			return 0;</div><div class="line">		i++;</div><div class="line">	&#125;</div><div class="line">	return tmp-&gt;ncount;//这个前缀出现了几次</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="TrieTree的实现"><a href="#TrieTree的实现" class="headerlink" title="TrieTree的实现"></a>TrieTree的实现</h1><h3 id="节点结构"><a href="#节点结构" class="headerlink" title="节点结构"></a>节点结构</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 26<span class="comment">//26个字母</span></span></div><div class="line"><span class="keyword">struct</span> trienode</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> ncount;<span class="comment">//记录该节点出现过的次数</span></div><div class="line">	<span class="keyword">struct</span> trienode *next[MAX];</div><div class="line">&#125;memory[<span class="number">1000000</span>];<span class="comment">//自己设定空间大小</span></div></pre></td></tr></table></figure>
+<h3 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> allocp=<span class="number">0</span>;</div><div class="line"><span class="function">trienode *<span class="title">createtrie</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	trienode *temp=&amp;memory[allocp++];</div><div class="line">	temp-&gt;nconut=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;MAX;i++)</div><div class="line">		temp-&gt;next[i]=<span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">return</span> temp;</div><div class="line">&#125;</div><div class="line">trienode *root=createtrie();<span class="comment">//根节点设为全局变量，减少调用次数</span></div></pre></td></tr></table></figure>
+<h3 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">inserttrie</span><span class="params">(<span class="keyword">char</span> str[])</span><span class="comment">//读入字符串</span></span></div><div class="line">&#123;</div><div class="line">	trienode *temp=root;</div><div class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,k;</div><div class="line">	<span class="keyword">while</span>(str[i])</div><div class="line">	&#123;</div><div class="line">		k=str[i]-<span class="string">'a'</span>;<span class="comment">//计算位置</span></div><div class="line">		<span class="keyword">if</span>(temp-&gt;next[k])</div><div class="line">		&#123;</div><div class="line">			temp-&gt;next[k]-&gt;ncount++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			temp-&gt;next[k]=createtrie();</div><div class="line">		&#125;</div><div class="line">		temp=temp-&gt;next[k];</div><div class="line">		i++;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">searchtrie</span><span class="params">(<span class="keyword">char</span> str[])</span><span class="comment">//读入字符串</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(root=<span class="literal">NULL</span>)</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	trienode *temp=root;</div><div class="line">	<span class="keyword">int</span> i=<span class="number">0</span>,k;</div><div class="line">	<span class="keyword">while</span>(str[i])</div><div class="line">	&#123;</div><div class="line">		k=str[i]-<span class="string">'a'</span>;</div><div class="line">		<span class="keyword">if</span>(temp-&gt;next[k])</div><div class="line">		&#123;</div><div class="line">			temp=temp-&gt;next[k];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		i++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> tmp-&gt;ncount;<span class="comment">//这个前缀出现了几次</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="trietree的应用"><a href="#trietree的应用" class="headerlink" title="trietree的应用"></a>trietree的应用</h1><ul>
 <li>用于串的快速检索</li>
 <li>串的排序</li>
@@ -407,7 +407,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -435,6 +435,32 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lyeec.me" title="Lyeec's Blog" target="_blank">Lyeec's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://dbwater.net" title="Dbwater's Blog" target="_blank">Dbwater's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hust.edu.cn/vjudge/toIndex.action" title="Virtual Judge" target="_blank">Virtual Judge</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
       </section>
@@ -464,7 +490,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
