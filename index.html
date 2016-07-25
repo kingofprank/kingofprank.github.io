@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-07-25T10:46:00+08:00" content="2016-07-25">
               2016-07-25
             </time>
@@ -278,35 +278,12 @@
 
       
         
-          
-            <a id="more"></a>
-<h1 id="认识Markdown"><a href="#认识Markdown" class="headerlink" title="认识Markdown"></a>认识Markdown</h1><hr>
-<p>Markdown是一种轻量级的<strong>标记语言</strong>，用简洁的语法代替复杂的排版格式。可以发布HTML格式的文件用来网站发布也可以导出PDF格式。用来写博客的排版是非常方便的。</p>
-<h1 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h1><hr>
-<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>在Markdown中用<code>#</code>号来定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 一级标题</div><div class="line">## 二级标题</div></pre></td></tr></table></figure></p>
-<p>最多可以1~6个<code>#</code>来确定不同级别的标题，在<code>#</code>号后面加一个空格是标准的Markdown语法。</p>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>分为有序表和无序表</p>
-<p>无序列表用<code>*</code>号来表示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* 1</div><div class="line">* 2</div><div class="line">* 3</div></pre></td></tr></table></figure></p>
-<p>有序列表用<code>1.</code>标号来表示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. a</div><div class="line">2. b</div><div class="line">3. c</div></pre></td></tr></table></figure></p>
-<p>同样要有一格的留空</p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>要从别处引用的话，需要用引用格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; 这里是引用（注意空格）</div></pre></td></tr></table></figure></p>
-<h3 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接"></a>图片与链接</h3><p>插入图片和插入链接的语法是类似的。<br>图片为<code>![img name](img address)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![Google](http://google.com.google.png)</div></pre></td></tr></table></figure></p>
-<p>链接为<code>[name](address)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[Google](http://google.com)</div></pre></td></tr></table></figure></p>
-<h3 id="斜体和粗体"><a href="#斜体和粗体" class="headerlink" title="斜体和粗体"></a>斜体和粗体</h3><p>两个<code>*</code>或者<code>_</code>包含的就是粗体，一个<code>*</code>或者<code>_</code>包含的就是斜体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">**粗体**</div><div class="line">*斜体*</div></pre></td></tr></table></figure></p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>要自己调整格式吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">A     |B      | SUM </div><div class="line">------|-------|-----</div><div class="line">  15  | 47    | 62  </div><div class="line">  20  | 14    | 34  </div><div class="line">  35  | 61    | 96</div></pre></td></tr></table></figure></p>
-<p>该语法生成的表格<br>A     |B      | SUM<br>——|——-|—-<br>  15  | 47    | 62<br>  20  | 14    | 34<br>  35  | 61    | 96  </p>
-<h3 id="代码框"><a href="#代码框" class="headerlink" title="代码框"></a>代码框</h3><p>用```把代码包括起来就可以咯。我比较喜欢用三个。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`This is a code`</div></pre></td></tr></table></figure></p>
-<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>用三个<code>*</code>可以有分割的效果，不管空格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* * *</div><div class="line">***</div></pre></td></tr></table></figure></p>
-<p>效果就像这样：</p>
-<hr>
-<ol>
-<li>反斜杠<br>可以通过在一些字符前面添加<code>\</code>来插入一些在语法中有特殊意义的符号<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\   反斜线</div><div class="line">`   反引号</div><div class="line">*   星号</div><div class="line">_   底线</div><div class="line">&#123;&#125;  花括号</div><div class="line">[]  方括号</div><div class="line">()  括弧</div><div class="line">#   井字号</div><div class="line">+   加号</div><div class="line">-   减号</div><div class="line">.   英文句点</div><div class="line">!   惊叹号</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h1 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h1><hr>
-<p>这篇博客参考了<br><a href="http://www.jianshu.com/p/1e402922ee32/" target="_blank" rel="external">Markdown——入门指南</a><br><a href="http://wowubuntu.com/markdown/#list" target="_blank" rel="external">Markdown语法说明(简体中文版)</a></p>
-
-          
+          <p>Markdown的简单使用说明书<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/25/Markdown/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -367,7 +344,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-08-22T23:52:00+08:00" content="2015-08-22">
               2015-08-22
             </time>
@@ -400,7 +377,7 @@
           <p>当第一眼看到更加神奇的世界，所发出的感叹，所有程序员入门的标准开局。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/22/hello-world/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -463,7 +440,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-08-18T12:48:00+08:00" content="2015-08-18">
               2015-08-18
             </time>
@@ -496,7 +473,7 @@
           <p>刚学到了一招关于拓扑排序的东西，就来兴致写这个了。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/18/toplogical-sort/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -559,7 +536,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-08-17T10:14:00+08:00" content="2015-08-17">
               2015-08-17
             </time>
@@ -592,7 +569,7 @@
           <p>字典树属于树形数据结构之一，在省空间和时间上大有作为。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/17/trie-tree/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -655,7 +632,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-08-13T15:43:27+08:00" content="2015-08-13">
               2015-08-13
             </time>
@@ -688,7 +665,7 @@
           <p>线段树数据结构的归纳总结<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/13/segment-tree/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -751,7 +728,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-08-12T21:03:00+08:00" content="2015-08-12">
               2015-08-12
             </time>
@@ -784,7 +761,7 @@
           <p>各种输入输出大法，控制格式是AC的第一步。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/12/stdio/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -847,7 +824,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-08-12T19:07:00+08:00" content="2015-08-12">
               2015-08-12
             </time>
@@ -880,7 +857,7 @@
           <p>自从有了并查集，妈妈再也不用担心我分类了。。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/12/Disjoint-set-data-structure/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -943,7 +920,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-08-11T23:48:42+08:00" content="2015-08-11">
               2015-08-11
             </time>
@@ -976,7 +953,7 @@
           <p>检索！分类！。。其实就是方便查阅。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/11/myblog-first/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -1039,7 +1016,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-08-11T20:43:00+08:00" content="2015-08-11">
               2015-08-11
             </time>
@@ -1072,7 +1049,7 @@
           <p>简要说明一下RMQ问题所用的ST算法<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/11/rmq/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -1135,7 +1112,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2015-08-11T19:25:57+08:00" content="2015-08-11">
               2015-08-11
             </time>
@@ -1168,7 +1145,7 @@
           <p>初入ACM的感想。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/11/hello-acm/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -1243,7 +1220,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1253,7 +1230,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1297,7 +1274,7 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
