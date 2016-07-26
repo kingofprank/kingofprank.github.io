@@ -1,0 +1,714 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="这一场各种猜结论，有的简单题目出的比较慢。主要内容有简单模拟，排列组合，博弈和高中物理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2016多校联合训练第三场">
+<meta property="og:url" content="http://yoursite.com/2016/07/26/multi-uni-contest3/index.html">
+<meta property="og:site_name" content="Kingofprank">
+<meta property="og:description" content="这一场各种猜结论，有的简单题目出的比较慢。主要内容有简单模拟，排列组合，博弈和高中物理。">
+<meta property="og:image" content="http://oava57hou.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720160726230115.png">
+<meta property="og:updated_time" content="2016-07-26T15:21:09.240Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2016多校联合训练第三场">
+<meta name="twitter:description" content="这一场各种猜结论，有的简单题目出的比较慢。主要内容有简单模拟，排列组合，博弈和高中物理。">
+<meta name="twitter:image" content="http://oava57hou.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720160726230115.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/26/multi-uni-contest3/"/>
+
+  <title> 2016多校联合训练第三场 | Kingofprank </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kingofprank</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                2016多校联合训练第三场
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-26T21:56:04+08:00" content="2016-07-26">
+              2016-07-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/26/multi-uni-contest3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/26/multi-uni-contest3/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这一场各种猜结论，有的简单题目出的比较慢。主要内容有简单模拟，排列组合，博弈和高中物理。<br><a id="more"></a></p>
+<h1 id="1001-Sqrt-Bo"><a href="#1001-Sqrt-Bo" class="headerlink" title="1001 Sqrt Bo"></a>1001 Sqrt Bo</h1><p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 131072/131072 K (Java/Others)<br>Total Submission(s): 0    Accepted Submission(s): 0</p>
+<h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Let’s define the function f(n)=[√n].</p>
+<p>Bo wanted to know the minimum number y which satisfies fy(n)=1.</p>
+<p>note:f1(n)=f(n),fy(n)=f(fy−1(n))</p>
+<p>It is a pity that Bo can only use 1 unit of time to calculate this function each time.</p>
+<p>And Bo is impatient, he cannot stand waiting for longer than 5 units of time.</p>
+<p>So Bo wants to know if he can solve this problem in 5 units of time.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>This problem has multi test cases(no more than 120).</p>
+<p>Each test case contains a non-negative integer n(n&lt;10100).</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each test case print a integer - the answer y or a string “TAT” - Bo can’t solve this problem.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><p><code>233
+233333333333333333333333333333333333333333333333333333333</code></p>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p><code>3
+TAT</code></p>
+<p>这道题目意思是有个f(n)函数，对n开根号向下取整。最多进行5次，问能不能在5次之后等于1。其实每一次的限制在1&lt;=x&lt;(Last_max)^2内就可以做到等于1，Last_max在第一次是2，所以分界线是4294967296。很简单的先判断一下长度有没有大于这个长度，然后写个函数恢复成长整型就可以了。贴上成神的代码。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">char</span> s[<span class="number">200</span>];</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s))&#123;</div><div class="line">        <span class="keyword">int</span> l = <span class="built_in">strlen</span>(s);</div><div class="line">        <span class="keyword">if</span>(l&lt;<span class="number">12</span>) &#123;</div><div class="line">            <span class="keyword">long</span> <span class="keyword">long</span> a = <span class="number">0</span>;</div><div class="line">            <span class="keyword">char</span> *p = s;</div><div class="line">            <span class="keyword">while</span>(p&lt;s+l) &#123;</div><div class="line">                a = a*<span class="number">10</span> + *p-<span class="string">'0'</span>;</div><div class="line">                ++p;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span>(cnt&lt;<span class="number">5</span>&amp;&amp;a!=<span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">double</span> x=a;</div><div class="line">                x = <span class="built_in">sqrt</span>(x);</div><div class="line">                a = (<span class="keyword">long</span> <span class="keyword">long</span>)x;</div><div class="line">                ++cnt;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(cnt&lt;=<span class="number">5</span>&amp;&amp;a==<span class="number">1</span>) &#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,cnt);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"TAT\n"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"TAT\n"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="1011-Teacher-Bo"><a href="#1011-Teacher-Bo" class="headerlink" title="1011 Teacher Bo"></a>1011 Teacher Bo</h1><p>Time Limit: 4000/2000 MS (Java/Others)    Memory Limit: 131072/131072 K (Java/Others)<br>Total Submission(s): 0    Accepted Submission(s): 0</p>
+<p>Problem Description</p>
+<h3 id="Teacher-BoBo-is-a-geography-teacher-in-the-school-One-day-in-his-class-he-marked-N-points-in-the-map-the-i-th-point-is-at-Xi-Yi-He-wonders-whether-there-is-a-tetrad-A-B-C-D-A-lt-B-C-lt-D-A≠CorB≠D-such-that-the-manhattan-distance-between-A-and-B-is-equal-to-the-manhattan-distance-between-C-and-D"><a href="#Teacher-BoBo-is-a-geography-teacher-in-the-school-One-day-in-his-class-he-marked-N-points-in-the-map-the-i-th-point-is-at-Xi-Yi-He-wonders-whether-there-is-a-tetrad-A-B-C-D-A-lt-B-C-lt-D-A≠CorB≠D-such-that-the-manhattan-distance-between-A-and-B-is-equal-to-the-manhattan-distance-between-C-and-D" class="headerlink" title="Teacher BoBo is a geography teacher in the school.One day in his class,he marked N points in the map,the i-th point is at (Xi,Yi).He wonders,whether there is a tetrad (A,B,C,D)(A&lt;B,C&lt;D,A≠CorB≠D) such that the manhattan distance between A and B is equal to the manhattan distance between C and D."></a>Teacher BoBo is a geography teacher in the school.One day in his class,he marked N points in the map,the i-th point is at (Xi,Yi).He wonders,whether there is a tetrad (A,B,C,D)(A&lt;B,C&lt;D,A≠CorB≠D) such that the manhattan distance between A and B is equal to the manhattan distance between C and D.</h3><p>If there exists such tetrad,print “YES”,else print “NO”.</p>
+<h3 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h3><p>First line, an integer T. There are T test cases.(T≤50)</p>
+<p>In each test case,the first line contains two intergers, N, M, means the number of points and the range of the coordinates.(N,M≤105).</p>
+<p>Next N lines, the i-th line shows the coordinate of the i-th point.(Xi,Yi)(0≤Xi,Yi≤M).</p>
+<h3 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h3><p>T lines, each line is “YES” or “NO”.</p>
+<h3 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input"></a>Sample Input</h3><p><code>2
+3 10
+1 1
+2 2
+3 3
+4 10
+8 8
+2 3
+3 3
+4 4</code></p>
+<h3 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output"></a>Sample Output</h3><p><code>YES
+NO</code></p>
+<p>这题是在平面上给的N个点，要求找到两组点(可以有一个点重复，不可以两个点都一样)曼哈顿距离相等。刚开始想复杂度要很大，以为要nlogn的解法。后来想了一段时间发现，曼哈顿距离最多只有2<em>M种可能，根据鸽笼原理必定会在2</em>M+1次之前产生重复。所以。。就暴力咯。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10000000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 1000000005</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">bool</span> mark[<span class="number">300005</span>]=&#123;<span class="literal">false</span>&#125;;</div><div class="line"><span class="keyword">int</span> x[<span class="number">300005</span>],y[<span class="number">300005</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">abs</span>(x[i]-x[j])+<span class="built_in">abs</span>(y[i]-y[j]);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</div><div class="line">    <span class="keyword">while</span>(t--)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> n,m;</div><div class="line">        <span class="keyword">bool</span> flag=<span class="literal">false</span>;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x[i],&amp;y[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">int</span> tmp=cal(i,j);</div><div class="line">                <span class="keyword">if</span>(mark[tmp]==<span class="literal">false</span>)</div><div class="line">                &#123;</div><div class="line">                    mark[tmp]=<span class="literal">true</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span></div><div class="line">                &#123;</div><div class="line">                    flag=<span class="literal">true</span>;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(flag==<span class="literal">true</span>)</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(flag==<span class="literal">true</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</div><div class="line">        <span class="built_in">memset</span>(mark,<span class="literal">false</span>,<span class="keyword">sizeof</span>(mark));</div><div class="line">        <span class="built_in">memset</span>(x,<span class="number">0</span>,<span class="keyword">sizeof</span>(x));</div><div class="line">        <span class="built_in">memset</span>(y,<span class="number">0</span>,<span class="keyword">sizeof</span>(y));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>Permutation Bo</p>
+<p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 131072/131072 K (Java/Others)<br>Total Submission(s): 0    Accepted Submission(s): 0<br>Special Judge</p>
+<h3 id="Problem-Description-1"><a href="#Problem-Description-1" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>There are two sequences h1~hn and c1~cn. h1~hn is a permutation of 1~n. particularly, h0=hn+1=0.</p>
+<p>We define the expression [condition] is 1 when condition is True,is 0 when condition is False.</p>
+<p>Define the function f(h)=∑ni=1ci[hi&gt;hi−1  and  hi&gt;hi+1]</p>
+<p>Bo have gotten the value of c1~cn, and he wants to know the expected value of f(h).</p>
+<h3 id="Input-2"><a href="#Input-2" class="headerlink" title="Input"></a>Input</h3><p>This problem has multi test cases(no more than 12).</p>
+<p>For each test case, the first line contains a non-negative integer n(1≤n≤1000), second line contains n non-negative integer ci(0≤ci≤1000).</p>
+<h3 id="Output-2"><a href="#Output-2" class="headerlink" title="Output"></a>Output</h3><p>For each test cases print a decimal - the expectation of f(h).</p>
+<p>If the absolute error between your answer and the standard answer is no more than 10−4, your solution will be accepted.</p>
+<h3 id="Sample-Input-2"><a href="#Sample-Input-2" class="headerlink" title="Sample Input"></a>Sample Input</h3><p><code>4
+3 2 4 5
+5
+3 5 99 32 12</code></p>
+<h3 id="Sample-Output-2"><a href="#Sample-Output-2" class="headerlink" title="Sample Output"></a>Sample Output</h3><p><code>6.000000
+52.833333</code></p>
+<p>题意是给出一个系列1-n的排列组合，求每个位置峰点的概率乘上系数求和。刚开始以为是概率dp，懵逼了一段时间后发现。原来是有规律可循的。暴力写了几个小的概率后猜测了一发就过了。。其实是在最左右两端的对概率的贡献有1/2，在中间位置的，考虑 大中小 三种情况，可以知道在6种组合里只有 中大小 和 小大中 是对概率有贡献的，所以中间概率就是1/3。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10000000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 1000000005</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">double</span> a[<span class="number">1005</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n))</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">double</span> sum=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf"</span>,&amp;a[i]);</div><div class="line">            <span class="keyword">if</span>(i!=<span class="number">1</span>&amp;&amp;i!=n)</div><div class="line">                sum+=a[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%.4lf\n"</span>,<span class="number">0.5</span>*(a[<span class="number">1</span>]+a[n])+(<span class="number">1.0</span>/<span class="number">3.0</span>)*sum);</div><div class="line">        <span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="1010-Rower-Bo"><a href="#1010-Rower-Bo" class="headerlink" title="1010 Rower Bo"></a>1010 Rower Bo</h1><p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 131072/131072 K (Java/Others)<br>Total Submission(s): 0    Accepted Submission(s): 0<br>Special Judge</p>
+<h3 id="Problem-Description-2"><a href="#Problem-Description-2" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>There is a river on the Cartesian coordinate system,the river is flowing along the x-axis direction.</p>
+<p>Rower Bo is placed at (0,a) at first.He wants to get to origin (0,0) by boat.Boat speed relative to water is v1,and the speed of the water flow is v2.He will adjust the direction of v1 to origin all the time.</p>
+<p>Your task is to calculate how much time he will use to get to origin.Your answer should be rounded to four decimal places.</p>
+<p>If he can’t arrive origin anyway,print”Infinity”(without quotation marks).</p>
+<h3 id="Input-3"><a href="#Input-3" class="headerlink" title="Input"></a>Input</h3><p>There are several test cases. (no more than 1000)</p>
+<p>For each test case,there is only one line containing three integers a,v1,v2.</p>
+<p>0≤a≤100, 0≤v1,v2,≤100, a,v1,v2 are integers</p>
+<h3 id="Output-3"><a href="#Output-3" class="headerlink" title="Output"></a>Output</h3><p>For each test case,print a string or a real number.</p>
+<p>If the absolute error between your answer and the standard answer is no more than 10−4, your solution will be accepted.</p>
+<h3 id="Sample-Input-3"><a href="#Sample-Input-3" class="headerlink" title="Sample Input"></a>Sample Input</h3><p><code>2 3 3
+2 4 3</code></p>
+<h3 id="Sample-Output-3"><a href="#Sample-Output-3" class="headerlink" title="Sample Output"></a>Sample Output</h3><p><code>Infinity
+1.1428571429</code></p>
+<p>这题就是高中物理竞赛里的经典的狗追兔子曲线。题意是在河对岸有一艘船以v1速度垂直向着原点开来，河流速度v2。行驶过程中始终指向原点，求到达时间。需要做一个坐标系转换，相当于原点以v2速度向一侧移动，船盯住原点开始前进。<br>源自华罗庚在《高等数学引论》第一卷第二分册第14章第8节“追踪问题”（p137-138）中所做的一种解答。当垂直的时候会有特例<code>(VcosΦ＋U)R＝(V2^2-U2^2)t＋aV</code>这里,V是狐狸的速度,U是兔子的速度,a是初始距离,R是狐狸和兔之间的距离（当狐狸追上兔子时R＝0）,t是追击所需的时间。<br>据此进一步推导可得<code>t＝aV/(V^2-U^2)</code>,兔子奔逃的距离<code>S=aVU/ (V^2-U^2)</code> ,狐狸追击的距离<code>S=aV^2/(V^2-U^2)</code>。<br>故当v1&lt;=v2的时候就无法到达，注意要特判a=0的情况，输出0，在这里wa了一次。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> a,v1,v2;</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a,&amp;v1,&amp;v2)) &#123;</div><div class="line">        <span class="keyword">if</span>(a==<span class="number">0</span>) &#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"0\n"</span>);</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(v1&gt;v2) &#123;</div><div class="line">            <span class="keyword">double</span> x = a*v1;</div><div class="line">            x /= (v1*v1-v2*v2);</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%lf\n"</span>, x);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"Infinity\n"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="1003-Life-Winner-Bo"><a href="#1003-Life-Winner-Bo" class="headerlink" title="1003 Life Winner Bo"></a>1003 Life Winner Bo</h1><p>Time Limit: 2000/1000 MS (Java/Others)    Memory Limit: 131072/131072 K (Java/Others)<br>Total Submission(s): 0    Accepted Submission(s): 0</p>
+<h3 id="Problem-Description-3"><a href="#Problem-Description-3" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>Bo is a “Life Winner”.He likes playing chessboard games with his girlfriend G.</p>
+<p>The size of the chessboard is N×M.The top left corner is numbered(1,1) and the lower right corner is numberd (N,M).</p>
+<p>For each game,Bo and G take turns moving a chesspiece(Bo first).At first,the chesspiece is located at (1,1).And the winner is the person who first moves the chesspiece to (N,M).At one point,if the chess can’t be moved and it isn’t located at (N,M),they end in a draw.</p>
+<p>In general,the chesspiece can only be moved right or down.Formally,suppose it is located at (x,y),it can be moved to the next point (x′,y′) only if x′≥x and y′≥y.Also it can’t be moved to the outside of chessboard.</p>
+<p>Besides,There are four kinds of chess(They have movement rules respectively).</p>
+<p>1.king.</p>
+<p>2.rook(castle).</p>
+<p>3.knight.</p>
+<p>4.queen.</p>
+<p>(The movement rule is as same as the chess.)</p>
+<p>For each type of chess,you should find out that who will win the game if they both play in an optimal strategy.</p>
+<p>Print the winner’s name(“B” or “G”) or “D” if nobody wins the game.</p>
+<h3 id="Input-4"><a href="#Input-4" class="headerlink" title="Input"></a>Input</h3><p>In the first line,there is a number T as a case number.</p>
+<p>In the next T lines,there are three numbers type,N and M.</p>
+<p>“type” means the kind of the chess.</p>
+<p>T≤1000,2≤N,M≤1000,1≤type≤4</p>
+<h3 id="Output-4"><a href="#Output-4" class="headerlink" title="Output"></a>Output</h3><p>For each question,print the answer.</p>
+<h3 id="Sample-Input-4"><a href="#Sample-Input-4" class="headerlink" title="Sample Input"></a>Sample Input</h3><p><code>4
+1 5 5
+2 5 5
+3 5 5
+4 5 5</code></p>
+<h3 id="Sample-Output-4"><a href="#Sample-Output-4" class="headerlink" title="Sample Output"></a>Sample Output</h3><p><code>G
+G
+D
+B</code></p>
+<p>这题出的我觉得很有意思，结合了博弈的知识。题意是给定一个N*M的棋盘，左上角为(1,1),右下角(n,m)。给定四种棋子，王，车，马，皇后。按照国际象棋的规则行动，唯一的限制是只能往左下角移动。其实这个限制非常的重要，是转化成博弈题目的关键所在。<br>首先考虑简单的车，只能向下和向右移动，其实可以转化成nim博弈。一开始有两堆石子，n和m，任意从一堆中取任意多棋子，谁先取完谁赢。那就很简单了，n=m，后手赢，n!=m,先手赢，因为先手总可以把局面变成n=m。<br>其次考虑王，从右下角开始往回推，可以得到每间隔2个是一个必胜态。故判断(n,m)是否等于(1+2i,1+2j)就行了。<br>接着考虑马，这个比较麻烦。可以手动推几个简单的点，得出规律，要注意，后手可以故意把局面导向平局。所以符合(3i,3i-1)或(3i-1,3i)的点是先手赢，符合(4+3i,4+3i)(对角线)的点是后手赢。<br>最后考虑皇后，这个是最坑的。我和成神推理了半天。得到了下面的表<br><img src="http://oava57hou.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720160726230115.png" alt=""><br>但是并不会找规律TAT。后来习得技能后发现，这是一个简单的威佐夫博弈。判断是否符合威佐夫博弈的必败态的点就行了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10000000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 1000000005</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> t;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</div><div class="line">    <span class="keyword">while</span>(t--)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> p,n,m;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;p,&amp;n,&amp;m);</div><div class="line">        <span class="keyword">if</span>(p==<span class="number">1</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((n<span class="number">-1</span>)%<span class="number">2</span>==<span class="number">0</span>&amp;&amp;(m<span class="number">-1</span>)%<span class="number">2</span>==<span class="number">0</span>)</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"G\n"</span>);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                <span class="built_in">printf</span>(<span class="string">"B\n"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(p==<span class="number">2</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(n==m)</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"G\n"</span>);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                <span class="built_in">printf</span>(<span class="string">"B\n"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(p==<span class="number">3</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((n%<span class="number">3</span>==<span class="number">0</span>&amp;&amp;n<span class="number">-1</span>==m)||(m%<span class="number">3</span>==<span class="number">0</span>&amp;&amp;m<span class="number">-1</span>==n))</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"B\n"</span>);</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>((n<span class="number">-4</span>)%<span class="number">3</span>==<span class="number">0</span>&amp;&amp;(m<span class="number">-4</span>)%<span class="number">3</span>==<span class="number">0</span>&amp;&amp;n==m)</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"G\n"</span>);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                <span class="built_in">printf</span>(<span class="string">"D\n"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(p==<span class="number">4</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((<span class="keyword">int</span>)(<span class="built_in">abs</span>(n-m)*((<span class="built_in">sqrt</span>(<span class="number">5.0</span>)+<span class="number">1.0</span>)/<span class="number">2.0</span>))==min(n<span class="number">-1</span>,m<span class="number">-1</span>))</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"G\n"</span>);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                <span class="built_in">printf</span>(<span class="string">"B\n"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第三场多校就先题解到这里，等以后技能等级提高了再做补充。</p>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5752" target="_blank" rel="external">2016多校联合训练第三场</a>(hdu题号从5752到5762)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/25/github/" rel="next" title="基于Github+Hexo建立博客">
+                <i class="fa fa-chevron-left"></i> 基于Github+Hexo建立博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/26/multi-uni-contest3/"
+           data-title="2016多校联合训练第三场" data-url="http://yoursite.com/2016/07/26/multi-uni-contest3/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpeg"
+               alt="MX Lin" />
+          <p class="site-author-name" itemprop="name">MX Lin</p>
+          <p class="site-description motion-element" itemprop="description">Always Challenge Miracle</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lyeec.me" title="Lyeec's Blog" target="_blank">Lyeec's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://dbwater.net" title="Dbwater's Blog" target="_blank">Dbwater's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hust.edu.cn/vjudge/toIndex.action" title="Virtual Judge" target="_blank">Virtual Judge</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1001-Sqrt-Bo"><span class="nav-number">1.</span> <span class="nav-text">1001 Sqrt Bo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.0.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.0.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.0.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.0.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.0.5.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1011-Teacher-Bo"><span class="nav-number">2.</span> <span class="nav-text">1011 Teacher Bo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Teacher-BoBo-is-a-geography-teacher-in-the-school-One-day-in-his-class-he-marked-N-points-in-the-map-the-i-th-point-is-at-Xi-Yi-He-wonders-whether-there-is-a-tetrad-A-B-C-D-A-lt-B-C-lt-D-A≠CorB≠D-such-that-the-manhattan-distance-between-A-and-B-is-equal-to-the-manhattan-distance-between-C-and-D"><span class="nav-number">2.0.1.</span> <span class="nav-text">Teacher BoBo is a geography teacher in the school.One day in his class,he marked N points in the map,the i-th point is at (Xi,Yi).He wonders,whether there is a tetrad (A,B,C,D)(A<B,C<D,A≠CorB≠D) such that the manhattan distance between A and B is equal to the manhattan distance between C and D.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output-1"><span class="nav-number">2.0.5.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-1"><span class="nav-number">2.0.6.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-2"><span class="nav-number">2.0.7.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-2"><span class="nav-number">2.0.8.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input-2"><span class="nav-number">2.0.9.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output-2"><span class="nav-number">2.0.10.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1010-Rower-Bo"><span class="nav-number">3.</span> <span class="nav-text">1010 Rower Bo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-2"><span class="nav-number">3.0.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-3"><span class="nav-number">3.0.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-3"><span class="nav-number">3.0.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input-3"><span class="nav-number">3.0.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output-3"><span class="nav-number">3.0.5.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1003-Life-Winner-Bo"><span class="nav-number">4.</span> <span class="nav-text">1003 Life Winner Bo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description-3"><span class="nav-number">4.0.1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-4"><span class="nav-number">4.0.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-4"><span class="nav-number">4.0.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input-4"><span class="nav-number">4.0.4.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output-4"><span class="nav-number">4.0.5.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MX Lin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kingofprank"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
