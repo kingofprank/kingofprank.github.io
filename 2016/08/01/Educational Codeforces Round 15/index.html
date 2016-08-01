@@ -1,0 +1,647 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在家CF上不去，点开了A题写完后网页就崩了，只能赛后补。好在是edu场，倒也无所谓。这场主要涉及暴力，二分查找等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Educational Codeforces Round 15 题解">
+<meta property="og:url" content="http://yoursite.com/2016/08/01/Educational Codeforces Round 15/index.html">
+<meta property="og:site_name" content="Kingofprank">
+<meta property="og:description" content="在家CF上不去，点开了A题写完后网页就崩了，只能赛后补。好在是edu场，倒也无所谓。这场主要涉及暴力，二分查找等。">
+<meta property="og:updated_time" content="2016-08-01T23:19:36.080Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Educational Codeforces Round 15 题解">
+<meta name="twitter:description" content="在家CF上不去，点开了A题写完后网页就崩了，只能赛后补。好在是edu场，倒也无所谓。这场主要涉及暴力，二分查找等。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/01/Educational Codeforces Round 15/"/>
+
+  <title> Educational Codeforces Round 15 题解 | Kingofprank </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kingofprank</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Educational Codeforces Round 15 题解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-01T21:31:11+08:00" content="2016-08-01">
+              2016-08-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/01/Educational Codeforces Round 15/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/01/Educational Codeforces Round 15/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在家CF上不去，点开了A题写完后网页就崩了，只能赛后补。好在是edu场，倒也无所谓。这场主要涉及暴力，二分查找等。<br><a id="more"></a></p>
+<h1 id="A-Maximum-Increase"><a href="#A-Maximum-Increase" class="headerlink" title="A. Maximum Increase"></a>A. Maximum Increase</h1><p>time limit per test1 second<br>memory limit per test256 megabytes<br>inputstandard input<br>outputstandard output</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>You are given array consisting of n integers. Your task is to find the maximum length of an increasing subarray of the given array.</p>
+<p>A subarray is the sequence of consecutive elements of the array. Subarray is called increasing if each element of this subarray strictly greater than previous.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line contains single positive integer n (1 ≤ n ≤ 10^5) — the number of integers.<br>The second line contains n positive integers a1, a2, …, an (1 ≤ ai ≤ 10^9).</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Print the maximum length of an increasing subarray of the given array.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>input<br><code>5
+1 7 2 11 15</code><br>output<br><code>3</code><br>input<br><code>6
+100 100 100 100 100 100</code><br>output<br><code>1</code><br>input<br><code>3
+1 2 3</code><br>output<br><code>3</code></p>
+<p>这题没啥好说的意思是找最长严格上升子串，一个O(N)的扫描记录就可以了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 1000000005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000007</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> a[maxn];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n,m,ans=<span class="number">0</span>,cot=<span class="number">0</span>;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(a[i]&gt;a[i<span class="number">-1</span>])</div><div class="line">            cot++;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            ans=max(ans,cot);</div><div class="line">            cot=<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,max(ans,cot));</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="B-Powers-of-Two"><a href="#B-Powers-of-Two" class="headerlink" title="B. Powers of Two"></a>B. Powers of Two</h1><p>time limit per test3 seconds<br>memory limit per test256 megabytes<br>inputstandard input<br>outputstandard output</p>
+<h3 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h3><p>You are given n integers a1, a2, …, an. Find the number of pairs of indexes i, j (i &lt; j) that ai + aj is a power of 2 (i. e. some integer x exists so that ai + aj = 2^x).</p>
+<h3 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h3><p>The first line contains the single positive integer n (1 ≤ n ≤ 10^5) — the number of integers.<br>The second line contains n positive integers a1, a2, …, an (1 ≤ ai ≤ 10^9).</p>
+<h3 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h3><p>Print the number of pairs of indexes i, j (i &lt; j) that ai + aj is a power of 2.</p>
+<h3 id="Examples-1"><a href="#Examples-1" class="headerlink" title="Examples"></a>Examples</h3><p>input<br><code>4
+7 3 2 1</code><br>output<br><code>2</code><br>input<br><code>3
+1 1 1</code><br>output<br><code>3</code></p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>In the first example the following pairs of indexes include in answer: (1, 4) and (2, 4).<br>In the second example all pairs of indexes (i, j) (where i &lt; j) include in answer.</p>
+<p>这题的意思求有多少对形如ai+aj的和等于2的次方。因为ai≤10^9,故也就二十几个2的次方个数。对于每个次方2^x来说枚举大于等于2^x/x=2^(x-1)的值才有意义，因为ai和aj里面必定至少要有一个大于等于2^(x-1)和才能凑够2^x。刚开始我还觉得会T，后来想想对于每个数y二分查找2^x-y之前出现的次数才O(nlogn)，绰绰有余。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 2000000000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line">ll a[maxn],num[maxn];</div><div class="line"><span class="keyword">int</span> k=<span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">find_power</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ll tmp=<span class="number">2</span>;</div><div class="line">    <span class="keyword">while</span>(tmp&lt;=INF)</div><div class="line">    &#123;</div><div class="line">        num[k++]=tmp;</div><div class="line">        tmp*=<span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    find_power();</div><div class="line">    <span class="keyword">int</span> n,p=<span class="number">0</span>;</div><div class="line">    ll ans=<span class="number">0</span>;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%I64d"</span>,&amp;a[i]);</div><div class="line">    &#125;</div><div class="line">    sort(a,a+n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">while</span>(a[i]&gt;=num[p]) p++;</div><div class="line">        ll tmp=num[p]-a[i];</div><div class="line">        ll *check=lower_bound(a,a+i,tmp);</div><div class="line">        <span class="keyword">if</span>(*check==tmp)</div><div class="line">            ans+=upper_bound(a,a+i,tmp)-check;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>,ans);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="C-Cellular-Network"><a href="#C-Cellular-Network" class="headerlink" title="C. Cellular Network"></a>C. Cellular Network</h1><p>time limit per test3 seconds<br>memory limit per test256 megabytes<br>inputstandard input<br>outputstandard output</p>
+<h3 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h3><p>You are given n points on the straight line — the positions (x-coordinates) of the cities and m points on the same line — the positions (x-coordinates) of the cellular towers. All towers work in the same way — they provide cellular network for all cities, which are located at the distance which is no more than r from this tower.</p>
+<p>Your task is to find minimal r that each city has been provided by cellular network, i.e. for each city there is at least one cellular tower at the distance which is no more than r.</p>
+<p>If r = 0 then a tower provides cellular network only for the point where it is located. One tower can provide cellular network for any number of cities, but all these cities must be at the distance which is no more than r from this tower.</p>
+<h3 id="Input-2"><a href="#Input-2" class="headerlink" title="Input"></a>Input</h3><p>The first line contains two positive integers n and m (1 ≤ n, m ≤ 10^5) — the number of cities and the number of cellular towers.</p>
+<p>The second line contains a sequence of n integers a1, a2, …, an ( - 10^9 ≤ ai ≤ 10^9) — the coordinates of cities. It is allowed that there are any number of cities in the same point. All coordinates ai are given in non-decreasing order.</p>
+<p>The third line contains a sequence of m integers b1, b2, …, bm ( - 10^9 ≤ bj ≤ 10^9) — the coordinates of cellular towers. It is allowed that there are any number of towers in the same point. All coordinates bj are given in non-decreasing order.</p>
+<h3 id="Output-2"><a href="#Output-2" class="headerlink" title="Output"></a>Output</h3><p>Print minimal r so that each city will be covered by cellular network.</p>
+<h3 id="Examples-2"><a href="#Examples-2" class="headerlink" title="Examples"></a>Examples</h3><p>input<br><code>3 2
+-2 2 4
+-3 0</code><br>output<br><code>4</code><br>input<br><code>5 3
+1 5 10 14 17
+4 11 15</code><br>output<br><code>3</code></p>
+<p>这题意思是说在一条直线上有一些城市，有一些信号塔，要求信号塔半径的范围最小，使得所有城市被覆盖。要倒过来想，对于每座城市只有两个选择，Rl和Rr,那肯定是取min(Rl,Rr)来的最优。所以ans=max(Σmin(Rl,Rr))。要注意边缘情况，在边缘的时候只需要考虑一遍的情况，我是额外加了两个信号塔，让他们坐标为INF和-INF。(这里还wa了一次)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 2000000000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line">ll a[maxn],b[maxn];</div><div class="line"><span class="keyword">int</span> k=<span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n,m;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%I64d"</span>,&amp;a[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%I64d"</span>,&amp;b[i]);</div><div class="line">    &#125;</div><div class="line">    b[<span class="number">0</span>]=-INF;b[m+<span class="number">1</span>]=INF;</div><div class="line">    ll ans=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        ll * tmp=upper_bound(b,b+m+<span class="number">1</span>,a[i]);</div><div class="line">        <span class="keyword">if</span>((tmp-b)==m+<span class="number">1</span>)</div><div class="line">        &#123;</div><div class="line">            ans=max(ans,<span class="built_in">abs</span>(a[i]-*(tmp<span class="number">-1</span>)));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>((tmp-b)==<span class="number">1</span>)</div><div class="line">        &#123;</div><div class="line">            ans=max(ans,<span class="built_in">abs</span>(a[i]-*tmp));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            ans=max(ans,min(<span class="built_in">abs</span>(a[i]-*tmp),<span class="built_in">abs</span>(a[i]-*(tmp<span class="number">-1</span>))));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>,ans);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>待续…</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/01/Bestcoder Round 85/" rel="next" title="BestCoder Round85 题解">
+                <i class="fa fa-chevron-left"></i> BestCoder Round85 题解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/01/Educational Codeforces Round 15/"
+           data-title="Educational Codeforces Round 15 题解" data-url="http://yoursite.com/2016/08/01/Educational Codeforces Round 15/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpeg"
+               alt="MX Lin" />
+          <p class="site-author-name" itemprop="name">MX Lin</p>
+          <p class="site-description motion-element" itemprop="description">Always Challenge Miracle</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lyeec.me" title="Lyeec's Blog" target="_blank">Lyeec's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://dbwater.net" title="Dbwater's Blog" target="_blank">Dbwater's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hust.edu.cn/vjudge/toIndex.action" title="Virtual Judge" target="_blank">Virtual Judge</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A-Maximum-Increase"><span class="nav-number">1.</span> <span class="nav-text">A. Maximum Increase</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.0.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.0.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">1.0.4.</span> <span class="nav-text">Examples</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B-Powers-of-Two"><span class="nav-number">2.</span> <span class="nav-text">B. Powers of Two</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">Examples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">2.0.5.</span> <span class="nav-text">Note</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-Cellular-Network"><span class="nav-number">3.</span> <span class="nav-text">C. Cellular Network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-2"><span class="nav-number">3.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples-2"><span class="nav-number">3.0.4.</span> <span class="nav-text">Examples</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MX Lin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kingofprank"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
