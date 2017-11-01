@@ -1,0 +1,653 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="这场很坑，cf狂崩，提交的题目在几十分钟后才有回复，所以unrated。不过可能是因为这个原因，所以才勉强可以登得上去，不然在家里网络都不行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round 365 (Div. 2)  题解">
+<meta property="og:url" content="http://yoursite.com/2016/08/07/Codeforces Round 365 (Div. 2)/index.html">
+<meta property="og:site_name" content="Kingofprank">
+<meta property="og:description" content="这场很坑，cf狂崩，提交的题目在几十分钟后才有回复，所以unrated。不过可能是因为这个原因，所以才勉强可以登得上去，不然在家里网络都不行。">
+<meta property="og:updated_time" content="2016-08-07T13:44:33.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codeforces Round 365 (Div. 2)  题解">
+<meta name="twitter:description" content="这场很坑，cf狂崩，提交的题目在几十分钟后才有回复，所以unrated。不过可能是因为这个原因，所以才勉强可以登得上去，不然在家里网络都不行。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/07/Codeforces Round 365 (Div. 2)/"/>
+
+  <title> Codeforces Round 365 (Div. 2)  题解 | Kingofprank </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kingofprank</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Codeforces Round 365 (Div. 2)  题解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-07T21:44:18+08:00" content="2016-08-07">
+              2016-08-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/07/Codeforces Round 365 (Div. 2)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/07/Codeforces Round 365 (Div. 2)/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这场很坑，cf狂崩，提交的题目在几十分钟后才有回复，所以unrated。不过可能是因为这个原因，所以才勉强可以登得上去，不然在家里网络都不行。<br><a id="more"></a></p>
+<h1 id="A-Mishka-and-Game"><a href="#A-Mishka-and-Game" class="headerlink" title="A. Mishka and Game"></a>A. Mishka and Game</h1><p>time limit per test1 second<br>memory limit per test256 megabytes<br>inputstandard input<br>outputstandard output</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Mishka is a little polar bear. As known, little bears loves spending their free time playing dice for chocolates. Once in a wonderful sunny morning, walking around blocks of ice, Mishka met her friend Chris, and they started playing the game.</p>
+<p>Rules of the game are very simple: at first number of rounds n is defined. In every round each of the players throws a cubical dice with distinct numbers from 1 to 6 written on its faces. Player, whose value after throwing the dice is greater, wins the round. In case if player dice values are equal, no one of them is a winner.</p>
+<p>In average, player, who won most of the rounds, is the winner of the game. In case if two players won the same number of rounds, the result of the game is draw.</p>
+<p>Mishka is still very little and can’t count wins and losses, so she asked you to watch their game and determine its result. Please help her!</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line of the input contains single integer n n (1 ≤ n ≤ 100) — the number of game rounds.</p>
+<p>The next n lines contains rounds description. i-th of them contains pair of integers mi and ci (1 ≤ mi,  ci ≤ 6) — values on dice upper face after Mishka’s and Chris’ throws in i-th round respectively.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>If Mishka is the winner of the game, print “Mishka” (without quotes) in the only line.</p>
+<p>If Chris is the winner of the game, print “Chris” (without quotes) in the only line.</p>
+<p>If the result of the game is draw, print “Friendship is magic!^^” (without quotes) in the only line.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>input<br><code>3
+3 5
+2 1
+4 2</code><br>output<br><code>Mishka</code><br>input<br><code>2
+6 1
+1 6</code><br>output<br><code>Friendship is magic!^^</code><br>input<br><code>3
+1 5
+3 3
+2 2</code><br>output<br><code>Chris</code></p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>In the first sample case Mishka loses the first round, but wins second and third rounds and thus she is the winner of the game.</p>
+<p>In the second sample case Mishka wins the first round, Chris wins the second round, and the game ends with draw with score 1:1.</p>
+<p>In the third sample case Chris wins the first round, but there is no winner of the next two rounds. The winner of the game is Chris.</p>
+<p>这题意思是有n局掷骰子游戏，每一局可能有胜负平，整个比赛也有可能正负平(根据获胜的次数来决定)。然后就模拟咯。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 2</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n,m,c,a=<span class="number">0</span>,b=<span class="number">0</span>;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;m,&amp;c);</div><div class="line">        <span class="keyword">if</span>(m&gt;c)</div><div class="line">            a++;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(m&lt;c)</div><div class="line">            b++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(a&gt;b)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Mishka\n"</span>);</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(b&gt;a)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Chris\n"</span>);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Friendship is magic!^^\n"</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="B-Mishka-and-trip"><a href="#B-Mishka-and-trip" class="headerlink" title="B. Mishka and trip"></a>B. Mishka and trip</h1><p>time limit per test1 second<br>memory limit per test256 megabytes<br>inputstandard input<br>outputstandard output</p>
+<h3 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h3><p>Little Mishka is a great traveller and she visited many countries. After thinking about where to travel this time, she chose XXX — beautiful, but little-known northern country.</p>
+<p>Here are some interesting facts about XXX:</p>
+<p>XXX consists of n cities, k of whose (just imagine!) are capital cities.<br>All of cities in the country are beautiful, but each is beautiful in its own way. Beauty value of i-th city equals to ci.<br>All the cities are consecutively connected by the roads, including 1-st and n-th city, forming a cyclic route 1 — 2 — … — n — 1. Formally, for every 1 ≤ i &lt; n there is a road between i-th and i + 1-th city, and another one between 1-st and n-th city.<br>Each capital city is connected with each other city directly by the roads. Formally, if city x is a capital city, then for every 1 ≤ i ≤ n,  i ≠ x, there is a road between cities x and i.<br>There is at most one road between any two cities.<br>Price of passing a road directly depends on beauty values of cities it connects. Thus if there is a road between cities i and j, price of passing it equals ci·cj.<br>Mishka started to gather her things for a trip, but didn’t still decide which route to follow and thus she asked you to help her determine summary price of passing each of the roads in XXX. Formally, for every pair of cities a and b (a &lt; b), such that there is a road between a and b you are to find sum of products ca·cb. Will you help her?</p>
+<h3 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h3><p>The first line of the input contains two integers n and k (3 ≤ n ≤ 100 000, 1 ≤ k ≤ n) — the number of cities in XXX and the number of capital cities among them.</p>
+<p>The second line of the input contains n integers c1, c2, …, cn (1 ≤ ci ≤ 10 000) — beauty values of the cities.</p>
+<p>The third line of the input contains k distinct integers id1, id2, …, idk (1 ≤ idi ≤ n) — indices of capital cities. Indices are given in ascending order.</p>
+<h3 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h3><p>Print the only integer — summary price of passing each of the roads in XXX.</p>
+<h3 id="Examples-1"><a href="#Examples-1" class="headerlink" title="Examples"></a>Examples</h3><p>input<br><code>4 1
+2 3 1 2
+3</code><br>output<br><code>17</code><br>input<br><code>5 2
+3 5 2 2 4
+1 4</code><br>output<br><code>71</code></p>
+<p>这题意思是给定一个环，然后给定几个环上的几个点为省会城市，省会城市和环上其他所有点都有连线。求这样的一张图每条路的value的和，路的value定义为两个端点的value乘积。这题刚开始看的时候想了一会后来觉得O(N)就可以做了。首先算出环上的所有值，然后对于不是省会城市的城市来说，连线会来自相邻的两个点(算过了，所以后面要去掉)和其他省会城市点(不包含相邻点)。对于是省会城市的点来说，会有来自其他省会城市的连线(这里要注意单独拿出来算sum，因为在最后要除以2)和相邻点(算过了)的连线。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line">ll c[maxn];</div><div class="line"><span class="keyword">bool</span> hashs[maxn];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n,k,tmp;</div><div class="line">    ll sum=<span class="number">0</span>,sum2=<span class="number">0</span>,ans=<span class="number">0</span>,ans2=<span class="number">0</span>;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%I64d"</span>,&amp;c[i]);</div><div class="line">        <span class="keyword">if</span>(i!=<span class="number">0</span>)</div><div class="line">            ans+=c[i]*c[i<span class="number">-1</span>];</div><div class="line">    &#125;</div><div class="line">    ans+=c[<span class="number">0</span>]*c[n<span class="number">-1</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;tmp);</div><div class="line">        hashs[tmp<span class="number">-1</span>]=<span class="literal">true</span>;</div><div class="line">        sum2+=c[tmp<span class="number">-1</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(hashs[i]==<span class="literal">false</span>)</div><div class="line">        &#123;</div><div class="line">            ans+=c[i]*sum2;</div><div class="line">            <span class="keyword">if</span>(hashs[((i<span class="number">-1</span>)&lt;<span class="number">0</span>?n<span class="number">-1</span>:i<span class="number">-1</span>)]==<span class="literal">true</span>)</div><div class="line">                ans-=c[i]*c[((i<span class="number">-1</span>)&lt;<span class="number">0</span>?n<span class="number">-1</span>:i<span class="number">-1</span>)];</div><div class="line">            <span class="keyword">if</span>(hashs[(i+<span class="number">1</span>)%n]==<span class="literal">true</span>)</div><div class="line">                ans-=c[i]*c[(i+<span class="number">1</span>)%n];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            ans2+=c[i]*(sum2-c[i]);</div><div class="line">            <span class="keyword">if</span>(hashs[((i<span class="number">-1</span>)&lt;<span class="number">0</span>?n<span class="number">-1</span>:i<span class="number">-1</span>)]==<span class="literal">true</span>)</div><div class="line">                ans2-=c[i]*c[((i<span class="number">-1</span>)&lt;<span class="number">0</span>?n<span class="number">-1</span>:i<span class="number">-1</span>)];</div><div class="line">            <span class="keyword">if</span>(hashs[(i+<span class="number">1</span>)%n]==<span class="literal">true</span>)</div><div class="line">                ans2-=c[i]*c[(i+<span class="number">1</span>)%n];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>,ans+ans2/<span class="number">2</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>cf崩的不行了，做完这两题就快结束了，后面的两题难度也差的很多，所以就暂时没有补了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/07/hexo_config/" rel="next" title="hexo使用注意事项">
+                <i class="fa fa-chevron-left"></i> hexo使用注意事项
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/01/A_New_Start/" rel="prev" title="新的旅程">
+                新的旅程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/07/Codeforces Round 365 (Div. 2)/"
+           data-title="Codeforces Round 365 (Div. 2)  题解" data-url="http://yoursite.com/2016/08/07/Codeforces Round 365 (Div. 2)/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpeg"
+               alt="MX Lin" />
+          <p class="site-author-name" itemprop="name">MX Lin</p>
+          <p class="site-description motion-element" itemprop="description">Always Challenge Miracle</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lyeec.me" title="Lyeec's Blog" target="_blank">Lyeec's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://dbwater.net" title="Dbwater's Blog" target="_blank">Dbwater's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hust.edu.cn/vjudge/toIndex.action" title="Virtual Judge" target="_blank">Virtual Judge</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A-Mishka-and-Game"><span class="nav-number">1.</span> <span class="nav-text">A. Mishka and Game</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.0.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.0.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">1.0.4.</span> <span class="nav-text">Examples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">1.0.5.</span> <span class="nav-text">Note</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B-Mishka-and-trip"><span class="nav-number">2.</span> <span class="nav-text">B. Mishka and trip</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">Examples</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MX Lin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kingofprank"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
