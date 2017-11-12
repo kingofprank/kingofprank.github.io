@@ -1,0 +1,631 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="这几天学着如何配置TensorFlow和Caffe环境，学到了许多有用的东西。因为在服务器上安装，没有root权限，整整折腾了这个东西三四天，才总算把Caffe装好。过程极其坎坷。下面简单介绍一下在这次配置中所用到的工具和内容，以及遇到的一些问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Caffe安装">
+<meta property="og:url" content="http://yoursite.com/2017/11/12/anaconda+TensorFlow+caffe/index.html">
+<meta property="og:site_name" content="Kingofprank">
+<meta property="og:description" content="这几天学着如何配置TensorFlow和Caffe环境，学到了许多有用的东西。因为在服务器上安装，没有root权限，整整折腾了这个东西三四天，才总算把Caffe装好。过程极其坎坷。下面简单介绍一下在这次配置中所用到的工具和内容，以及遇到的一些问题。">
+<meta property="og:updated_time" content="2017-11-12T14:25:59.696Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Caffe安装">
+<meta name="twitter:description" content="这几天学着如何配置TensorFlow和Caffe环境，学到了许多有用的东西。因为在服务器上安装，没有root权限，整整折腾了这个东西三四天，才总算把Caffe装好。过程极其坎坷。下面简单介绍一下在这次配置中所用到的工具和内容，以及遇到的一些问题。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/12/anaconda+TensorFlow+caffe/"/>
+
+  <title> Caffe安装 | Kingofprank </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kingofprank</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Caffe安装
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-12T15:21:00+08:00" content="2017-11-12">
+              2017-11-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/11/12/anaconda+TensorFlow+caffe/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/12/anaconda+TensorFlow+caffe/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这几天学着如何配置TensorFlow和Caffe环境，学到了许多有用的东西。因为在服务器上安装，没有root权限，整整折腾了这个东西三四天，才总算把Caffe装好。过程极其坎坷。下面简单介绍一下在这次配置中所用到的工具和内容，以及遇到的一些问题。</p>
+<a id="more"></a>
+<p>首先先介绍一下我所用的环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Linux Mint 17.3 Rosa</div><div class="line">Anaconda3</div><div class="line">Python 3.6.3</div><div class="line">gcc 4.8.4</div><div class="line">g++ 4.9.4</div><div class="line">NVIDIA UNIX x86_64 Kernel Module  375.66 // Nvidia驱动版本</div><div class="line">Cuda8.0</div><div class="line">cuDNN6.0.21</div><div class="line">OpenBLAS-0.2.20</div><div class="line">Opencv3.1.0</div><div class="line">protobuf3.4.0</div><div class="line">boost</div></pre></td></tr></table></figure></p>
+<h1 id="Anaconda3"><a href="#Anaconda3" class="headerlink" title="Anaconda3"></a>Anaconda3</h1><p>从师兄那知道了Anaconda这个管理工具，可以很方便的配置不同环境中的python，下面简单的介绍一下。Anaconda是一款包管理和环境管理工具，能轻松的解决python多环境下管理包的问题。</p>
+<p>Anaconda分2和3，分别是默认不同版本的python。我这里使用的是Anaconda3，自带python3.4.5。</p>
+<p><a href="https://www.anaconda.com/download/" target="_blank" rel="external">官网地址</a></p>
+<p>安装过程默认就行，不使用root权限（由于是在服务器上，也没有root权限），Anaconda3会在<code>~/anaconda3</code>生成文件，安装过程中会有一个选项，是否把程序bin目录加入<code>$PATH</code>，输入yes，在linux中会写入<code>~/.bashrc</code>，安装之后记得查看一下。之后记得用<code>source ~/.bashrc</code>命令更新一下环境变量。</p>
+<p>下面给出几个常用的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">conda --version // 查看版本</div><div class="line"></div><div class="line"># 环境管理</div><div class="line"></div><div class="line">conda create --name tensorflow python=3.4 // 创建一个名为tensorFlow的环境，同时指定python版本为3.4.x，conda会自动安装3.4.x中最新的版本。</div><div class="line"></div><div class="line">source activate tensorflow // 激活tensorflow环境</div><div class="line"></div><div class="line">source deactivate tensorflow // 返回默认环境，Linux和Mac环境下返回命令</div><div class="line">deactivate tensorflow // Windows下返回命令</div><div class="line"></div><div class="line">conda remove --name tensorflow -all // 删除一个已有的环境</div><div class="line"></div><div class="line">conda info -e // 查看安装的环境</div><div class="line"></div><div class="line"></div><div class="line"># 包管理</div><div class="line"></div><div class="line">conda install PackageName // 在当前环境下安装包，conda会自动加载所需要的依赖库，并且自动更新，相当的方便。可以令PackageName=x.x.x 指定版本更新</div><div class="line"></div><div class="line">conda remove/uninstall PackageName //指定删除当前环境下的某个包，同时也会删除依赖库</div><div class="line"></div><div class="line">conda list // 查看该环境下，安装的包，是从site-packages文件夹中搜索已经安装的包</div><div class="line"></div><div class="line">conda update PackageName //更新包，也可以更新conda</div><div class="line"></div><div class="line">以上命令都可以添加 -n EnvName 来指定在某个环境中进行</div><div class="line"></div><div class="line"></div><div class="line"># 修改镜像地址</div><div class="line"></div><div class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ // 添加清华的镜像，加快下载速度，TUNA的help中镜像地址加有引号，需要去掉</div><div class="line"></div><div class="line">conda config --set show_channel_urls yes // 设置搜索时显示的通道地址</div><div class="line"></div><div class="line">在对conda执行上述命令后，会在~/.condarc或者C:\Users\USER_NAME\.condarc添加进路劲信息，如下所示</div><div class="line"></div><div class="line"> 1 channels:</div><div class="line"> 2   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</div><div class="line"> 3   - defaults</div><div class="line"> 4 ssl_verify: true</div></pre></td></tr></table></figure></p>
+<p>不同的环境下安装的都会放在<code>~/anaconda3/envs</code>下，会有一个带有该环境名字的文件夹。到此为止，基本环境已经搭建好了，下面需要介绍几个重要的依赖库。</p>
+<h1 id="cuda8-0"><a href="#cuda8-0" class="headerlink" title="cuda8.0"></a>cuda8.0</h1><p>。。。</p>
+<h1 id="cuDNN"><a href="#cuDNN" class="headerlink" title="cuDNN"></a>cuDNN</h1><p>。。。</p>
+<h1 id="Boost"><a href="#Boost" class="headerlink" title="Boost"></a>Boost</h1><p>在我的环境下，安装了2个版本的boost。<br>第一个是系统默认的1.54.0。(头文件在<code>/usr/include/boost</code>,函数库文件在<code>/usr/lib/x86_64-linux-gnu</code>)<br>第二个是anaconda默认环境下的1.61.0。（头文件在<code>~/anaconda3/include/boost</code>,库文件在<code>~/anaconda3/lib</code>）</p>
+<p>我这里使用的是1.61.0的boost版本，这里因为在环境变量中设置了$PATH,所以anaconda的boost覆盖了系统的boost。这里要着重说明的一点是，因为boost在$PATH路径覆盖的范围内，所以覆盖了系统的boost。但是之后的protobuf，由于头文件和库文件都没有安装到<code>~/anaconda3/include</code>和<code>~/anaconda3/lib</code>下所以无法被调用，这导致了我安装上巨大的问题，坑了好多天！！</p>
+<p><code>~/anaconda3/pkgs</code>文件夹中放的是conda下载的压缩包和解压的文件夹。在这个文件夹下我有<code>boost-1.61.0-py36_0</code>，但又有一个叫<code>libboost-1.65.1-h4055789_3</code>的，貌似是我通过conda安装的，但是也不知道libboost文件有什么用处，先不管了。</p>
+<p>通过命令<br><code>conda install boost</code><br>安装在该环境下。</p>
+<h1 id="Protobuf"><a href="#Protobuf" class="headerlink" title="Protobuf"></a>Protobuf</h1><p>大坑，待更。。</p>
+<h1 id="hdf5"><a href="#hdf5" class="headerlink" title="hdf5"></a>hdf5</h1><p>待更。。</p>
+<h1 id="Opencv"><a href="#Opencv" class="headerlink" title="Opencv"></a>Opencv</h1><p>同样的，在系统中就已经装了opencv2.4.8版本的了，不过同样在anaconda中已经有opencv3.1.0了，于是可以覆盖掉系统的版本。<br>但是需要手动的编译opencv。</p>
+<p>(官方网站)[<a href="http://blog.csdn.net/yhaolpz/article/details/71375762" target="_blank" rel="external">http://blog.csdn.net/yhaolpz/article/details/71375762</a>]</p>
+<p>解压到要安装的位置，执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mkdir build</div><div class="line"></div><div class="line">cd build</div><div class="line"></div><div class="line">make -D -DBUILD_TIFF=ON</div><div class="line"></div><div class="line">make install</div></pre></td></tr></table></figure></p>
+<p>这里主要是要手动的打开<code>-DBUILD_TIFF=ON</code>，不然会在make caffe的时候报错<code>undefined reference toTIFFRGBAImageOK@LIBTIFF_4.0&#39;</code>。</p>
+<p>其实这里也存在疑惑，先记录一下，我在anaconda中安装了opencv，python也是调用anaconda下的opencv。在编译的时候如果不手动编译的话，就会报错，但是我手动编译之后，用<code>pkg-config --modversion opencv</code>命令查看opencv版本的时候仍然是2.4.8版本的，这可能是因为我没有用sudo命令安装有关，我安装的是在用户根目录下，所以pkg工具找不到。但是因为我把anaconda添加到$PATH中，所以我觉得在caffe编译的时候还是会先找anaconda下的opencv，但是这里就不知道手动编译的opencv去哪里了。。。</p>
+<h1 id="Caffe"><a href="#Caffe" class="headerlink" title="Caffe"></a>Caffe</h1><p>Caffe从很早以前就听说是一个很困难的东西，安装起来非常的不方便（所以搞上了TensorFlow）。</p>
+<p>首先是要安装cuda，这里因为在服务器上已经安装好了cuda-8.0和cudnn，最困难的部分已经搞定了。</p>
+<p>。。。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/01/A_New_Start/" rel="next" title="新的旅程">
+                <i class="fa fa-chevron-left"></i> 新的旅程
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/11/12/anaconda+TensorFlow+caffe/"
+           data-title="Caffe安装" data-url="http://yoursite.com/2017/11/12/anaconda+TensorFlow+caffe/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpeg"
+               alt="MX Lin" />
+          <p class="site-author-name" itemprop="name">MX Lin</p>
+          <p class="site-description motion-element" itemprop="description">Always Challenge Miracle</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lyeec.me" title="Lyeec's Blog" target="_blank">Lyeec's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://dbwater.net" title="Dbwater's Blog" target="_blank">Dbwater's Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.hust.edu.cn/vjudge/toIndex.action" title="Virtual Judge" target="_blank">Virtual Judge</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Anaconda3"><span class="nav-number">1.</span> <span class="nav-text">Anaconda3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cuda8-0"><span class="nav-number">2.</span> <span class="nav-text">cuda8.0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cuDNN"><span class="nav-number">3.</span> <span class="nav-text">cuDNN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Boost"><span class="nav-number">4.</span> <span class="nav-text">Boost</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Protobuf"><span class="nav-number">5.</span> <span class="nav-text">Protobuf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdf5"><span class="nav-number">6.</span> <span class="nav-text">hdf5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Opencv"><span class="nav-number">7.</span> <span class="nav-text">Opencv</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Caffe"><span class="nav-number">8.</span> <span class="nav-text">Caffe</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MX Lin</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kingofprank"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
